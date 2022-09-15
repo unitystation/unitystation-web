@@ -22,15 +22,15 @@ jobs:
                 with:
                     node-version:18.x
             -   run: npm install
-            -   name: unit-testing
-                run: npm run test:unit
+#            -   name: unit-testing
+#                run: npm run test:unit
             -   name: e2e
                 run: npm run test:e2e
 
     release:
         runs-on: ubuntu-latest
         depends-on:
-            -   [lint]
+            -   [testing]
         steps:
             -   name: Checkout
                 uses: actions/checkout@v3
