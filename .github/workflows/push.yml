@@ -2,7 +2,7 @@ on:
     push:
         branches:
             - master
-
+            - develop
 jobs:
     lint:
         runs-on: ubuntu-latest
@@ -13,24 +13,36 @@ jobs:
                     node-version: 18.x
             -   run: npm install
             -   run: npm run lint
-    testing:
+    unit_test:
         runs-on: ubuntu-latest
-        depends-on: [lint]
+        needs: [lint]
         steps:
             -   uses: actions/checkout@v3
             -   uses: actions/setup-node@v3
                 with:
-                    node-version:18.x
+                    node-version: 18.x
             -   run: npm install
-            -   name: unit-testing
+            -   name: build
+                run: npm run build
+            -   name: unit test
                 run: npm run test:unit
-            -   name: e2e
+    e2e_test:
+        runs-on: ubuntu-latest
+        needs: [lint]
+        steps:
+            -   uses: actions/checkout@v3
+            -   uses: actions/setup-node@v3
+                with:
+                    node-version: 18.x
+            -   run: npm install
+            -   name: build
+                run: npm run build
+            -   name: unit test
                 run: npm run test:e2e
-
     release:
         runs-on: ubuntu-latest
-        depends-on:
-            -   [lint]
+        needs: [lint, unit_test, e2e_test]
+        if: github.ref == 'refs/heads/master'
         steps:
             -   name: Checkout
                 uses: actions/checkout@v3
