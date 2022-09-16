@@ -38,3 +38,7 @@ next-env.d.ts
 # cypress
 /cypress/videos
 /cypress/screenshots
+
+# IDE
+.idea
+.vscode
