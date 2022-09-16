@@ -1,6 +1,4 @@
-import LandingButtons from './landingButtons';
-
-type LandingTextProps = {
+interface LandingTextProps {
     mainText: string
     secondaryText: string
     lastText: string
@@ -20,7 +18,6 @@ const LandingText = (props: LandingTextProps) => {
             <p className={'mx-auto mt-4 font-extralight'}>
                 {lastText}
             </p>
-            <LandingButtons/>
         </div>)
 }
 

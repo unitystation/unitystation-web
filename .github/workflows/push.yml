@@ -13,6 +13,7 @@ jobs:
                     node-version: 18.x
             -   run: npm install
             -   run: npm run lint
+            -   run: npm run build
 #    unit_test:
 #        runs-on: ubuntu-latest
 #        needs: [lint]
@@ -22,8 +23,6 @@ jobs:
 #                with:
 #                    node-version: 18.x
 #            -   run: npm install
-#            -   name: build
-#                run: npm run build
 #            -   name: unit test
 #                run: npm run test:unit
     e2e_test:
@@ -35,8 +34,6 @@ jobs:
                 with:
                     node-version: 18.x
             -   run: npm install
-            -   name: build
-                run: npm run build
             -   name: unit test
                 run: npm run test:e2e
     release:
