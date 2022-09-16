@@ -28,7 +28,7 @@ export function ChangesGroup(props: { changes: Array<Change>, title: string }) {
             <CardBody>
                 <ul className={"list-disc"}>
                     {
-                        changes?.map((change) => <li><ChangeEntry {...change}/></li>)
+                        changes?.map((change) => <li><ChangeEntry key={change.description}{...change}/></li>)
                     }
                 </ul>
             </CardBody>

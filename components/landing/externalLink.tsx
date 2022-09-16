@@ -11,6 +11,7 @@ const ExternalLink = (props: ExternalLinkProps) => {
             className="inline-flex items-center px-3 py-2 rounded-lg"
             href={href}
             target="_blank"
+            rel="noreferrer"
         >
             {text}
             <svg
