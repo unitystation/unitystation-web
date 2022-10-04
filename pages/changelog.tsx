@@ -1,74 +1,63 @@
 import {NextPage} from 'next';
-import Section from '../components/layout/section';
-import {ChangesGroup} from '../components/changelog/changes';
-import Container from '../components/layout/container';
+import FlexPageContainer from '../components/layout/prefabs/flexPageContainer';
+import FluidMainContainer from '../components/layout/prefabs/fixedFluidFixed/fluidMainContainer';
+import ChangelogResultsPage from '../components/changelog/changelogResultsPage';
+import {AllChangesResponse} from '../types/allChangesResponse';
 import {useEffect, useState} from 'react';
-import {Change, WhatsNewResponse} from '../types/whatsNewResponse';
-import Row from '../components/layout/row';
-import Column from '../components/layout/column';
-import {Card} from '../components/cards/card';
+
+
+const initialResponse: AllChangesResponse = {
+    count: 0,
+    next: null,
+    previous: null,
+    results: []
+}
+
 
 const Changelog: NextPage = () => {
-    const [build, setBuild] = useState("build");
-    const [buildDate, setBuildDate] = useState("date");
-    const [fixChanges, setFixChanges] = useState(new Array<Change>);
-    const [newChanges, setNewChanges] = useState(new Array<Change>);
-    const [improvChanges, setImprovChanges] = useState(new Array<Change>);
-    const [balanceChanges, setBalanceChanges] = useState(new Array<Change>);
+    const [changelog, setChangelog] = useState<AllChangesResponse>(initialResponse);
+    const [url, setUrl] = useState<string | null>('https://changelog.unitystation.org/all-changes?limit=3');
 
     useEffect(() => {
-        fetch('https://changelog.unitystation.org/whats-new').then(
-            (response) => response.json().then(
-                (data: WhatsNewResponse) => {
-                    setBuild(data.build);
-                    setBuildDate(data.changes[0].date_added);
-                    setFixChanges(data.changes.filter((change) => change.category === 'FIX'));
-                    setNewChanges(data.changes.filter((change) => change.category === 'NEW'));
-                    setImprovChanges(data.changes.filter((change) => change.category === 'IMPROVEMENT'));
-                    setBalanceChanges(data.changes.filter((change) => change.category === 'BALANCE'));
-                }
-            )
-        )
-    }, []);
+        if (url == null) return;
+        window.scrollTo(0, 0)
+        fetch(url).
+            then(response => response.json()).
+            then((data: AllChangesResponse) => {
+                setChangelog(data);
+                console.log(data);
+        })
+    }, [url]);
 
+    const handleNextClicked = () => {
+        console.log('next clicked');
+        setUrl(changelog.next);
+    }
+
+    const handlePrevClicked = () => {
+        console.log('prev clicked');
+        setUrl(changelog.previous);
+    }
 
     return (
         <>
-            <Section>
-                <Container>
-                    <div className={"p-5"}>
-                        <Column>
-                            <Row>
-                                <h1 className={"text-5xl font-bold text-center"}>Latest changes</h1>
-                            </Row>
-                            <Row>
-                                <div>
-                                    <h2 className={"text-2xl font-bold text-left"}>Build: {build}</h2>
-                                    <h2 className={"text-2xl font-bold text-left"}>Date: {buildDate}</h2>
-                                </div>
-                            </Row>
-                        </Column>
-                        <Column>
-                            <Row>
-                                <Card>
-                                    {newChanges.length > 0 &&
-                                    <ChangesGroup changes={newChanges} title={"New"} />
-                                    }
-                                    {fixChanges.length > 0 &&
-                                    <ChangesGroup changes={fixChanges} title={"Fixes"} />
-                                    }
-                                    {improvChanges.length > 0 &&
-                                    <ChangesGroup changes={improvChanges} title={"Improvements"} />
-                                    }
-                                    {balanceChanges.length > 0 &&
-                                    <ChangesGroup changes={balanceChanges} title={"Balance"} />
-                                    }
-                                </Card>
-                            </Row>
-                        </Column>
+            <FlexPageContainer>
+                <FluidMainContainer>
+                    <div className={'w-full flex flex-col items-center justify-center'}>
+                        <h1 className={'text-3xl font-bold text-center'}>Changelog</h1>
+                        <br/>
+                        <br/>
+
+                        <ChangelogResultsPage
+                            count={changelog.count}
+                            next={changelog.next}
+                            previous={changelog.previous}
+                            results={changelog.results}
+                            handleNextClicked={handleNextClicked}
+                            handlePrevClicked={handlePrevClicked}/>
                     </div>
-                </Container>
-            </Section>
+                </FluidMainContainer>
+            </FlexPageContainer>
         </>
     )
 }
