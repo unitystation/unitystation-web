@@ -14,7 +14,12 @@
         "test:unit": "start-server-and-test dev 3000  cypress:headless:unit "
     },
     "dependencies": {
+        "@fortawesome/fontawesome-svg-core": "^6.2.0",
+        "@fortawesome/free-solid-svg-icons": "^6.2.0",
+        "@fortawesome/react-fontawesome": "^0.2.0",
         "@types/ua-parser-js": "^0.7.36",
+        "flowbite": "^1.5.3",
+        "flowbite-react": "^0.1.11",
         "next": "12.2.5",
         "react": "18.2.0",
         "react-dom": "18.2.0",

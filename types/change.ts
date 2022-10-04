@@ -9,9 +9,4 @@ interface Change {
     date_added: string,
 }
 
-interface WhatsNewResponse {
-    build: string,
-    changes: Change[],
-}
-
-export type {WhatsNewResponse, Change};
+export default Change;
