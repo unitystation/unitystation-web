@@ -7,6 +7,7 @@ const Index: NextPage = () => {
     return (
         <>
             <Section>
+                <div className={"h-screen"}>
                     <br></br>
                     <br></br>
                     <br></br>
@@ -15,6 +16,7 @@ const Index: NextPage = () => {
                         secondaryText={'Free and open-source remake of the cult classic Space Station 13, made in Unity Engine.'}
                         lastText={'Our website is currently in the middle of a make-over. Expect a lot of cool things soon!'}/>
                     <LandingButtons/>
+                </div>
             </Section>
         </>
     )

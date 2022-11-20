@@ -38,7 +38,7 @@ const BuildComponent = (props: Build) => {
 
     return (
         <div className={'max-w-xl min-w-sm'}>
-            <Card href={'#'}>
+            <Card>
                 <div className={'mb-4 flex justify-between'}>
                     <h5 className="text-xl font-bold leading-none text-white">
                         Build: {version_number}
