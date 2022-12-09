@@ -40,7 +40,7 @@ const BuildComponent = (props: Build) => {
         <div className={'max-w-xl min-w-sm'}>
             <Card>
                 <div className={'mb-4 flex justify-between'}>
-                    <h5 className="text-xl font-bold leading-none text-white">
+                    <h5 className="text-xl font-bold leading-none text-yellow-300">
                         Build: {version_number}
                     </h5>
                     <h5 className="text-xl font-bold leading-none text-white">

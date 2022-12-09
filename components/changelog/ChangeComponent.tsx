@@ -37,5 +37,10 @@ const determineIcon = (category: string) => {
             return faQuestion;
     }
 }
-
+/* 
+NEW 		text-green-500
+FIX 		text-red-500
+IMPROVEMENT text-blue-600
+balance 	yellow-200
+*/
 export default ChangeComponent;
