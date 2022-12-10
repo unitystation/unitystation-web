@@ -4,8 +4,10 @@ Date: 08/12/2022 - 1h
 
 Fr_Dae
 
-    - Modification du fichier CSS BuildComponent & ChangeComponent
-    - Ajout du changelog.ma
+    - Modification of the CSS BuildComponent file (value version_number, )
+	- Modification of the CSS ChangeComponent file (value pr_number)
+    - Add changelog.ma
+	- add classNameIcon which allows to change the colour of an icon
     
 ------------------------------------------------------
 Version 1.1.0

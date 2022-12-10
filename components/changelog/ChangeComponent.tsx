@@ -8,21 +8,35 @@ const ChangeComponent = (props: Change) => {
         <li className={'py-3 sm:py-4'}>
             <div className={'flex items-center space-x-4'}>
                 <div className={'shrink-0'}>
-                    <FontAwesomeIcon className={'text-xl'} icon={determineIcon(category)}></FontAwesomeIcon>
+                    <FontAwesomeIcon className={['text-xl',classNameIcon(category)].join(' ')} icon={determineIcon(category) }></FontAwesomeIcon>
                 </div>
                 <div className={'min-w-0 flex-1'}>
                     <p className={'text-sm font-medium text-white-900'}>
                         {description}
                     </p>
                     <p className="text-sm text-gray-400">
-                        contributed by <a href={author_url} className={'text-gray-400 hover:text-gray-500 hover:underline'}>{author_username}</a> in <a href={pr_url} className={'text-gray-400 hover:text-gray-500 hover:underline'}>PR #{pr_number}</a>
+                        contributed by <a href={author_url} className={'text-gray-400 hover:text-gray-500 hover:underline'}>{author_username}</a> 
+                        in <a href={pr_url} className={'text-purple-500 hover:text-purple-500 hover:underline'}>PR #{pr_number}</a>
                     </p>
                 </div>
             </div>
         </li>
     )
 }
-
+const classNameIcon = (category: string) => {
+    switch (category) {
+        case 'NEW':
+            return 'text-green-500';
+        case 'FIX':
+            return 'text-red-500';
+        case 'IMPROVEMENT':
+            return 'text-blue-600';
+        case 'balance':
+            return 'yellow-200';
+        default:
+            return ;
+    }
+}
 const determineIcon = (category: string) => {
     switch (category) {
         case 'NEW':
@@ -37,10 +51,4 @@ const determineIcon = (category: string) => {
             return faQuestion;
     }
 }
-/* 
-NEW 		text-green-500
-FIX 		text-red-500
-IMPROVEMENT text-blue-600
-balance 	yellow-200
-*/
 export default ChangeComponent;
