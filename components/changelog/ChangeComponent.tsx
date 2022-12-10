@@ -23,7 +23,7 @@ const ChangeComponent = (props: Change) => {
         </li>
     )
 }
-const classNameIcon = (category: string) => {
+const determineClassNameIcon = (category: string) => {
     switch (category) {
         case 'NEW':
             return 'text-green-500';
