@@ -8,7 +8,7 @@ const ChangeComponent = (props: Change) => {
         <li className={'py-3 sm:py-4'}>
             <div className={'flex items-center space-x-4'}>
                 <div className={'shrink-0'}>
-                    <FontAwesomeIcon className={`text-xl ${determineClassNameIcon(category)}` icon={determineIcon(category) }></FontAwesomeIcon>
+                    <FontAwesomeIcon className={`text-xl ${determineClassNameIcon(category)}`} icon={determineIcon(category)}></FontAwesomeIcon>
                 </div>
                 <div className={'min-w-0 flex-1'}>
                     <p className={'text-sm font-medium text-white-900'}>
