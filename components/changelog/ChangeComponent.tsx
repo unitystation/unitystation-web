@@ -16,7 +16,7 @@ const ChangeComponent = (props: Change) => {
                     </p>
                     <p className="text-sm text-gray-400">
                         contributed by <a href={author_url} className={'text-gray-400 hover:text-gray-500 hover:underline'}>{author_username}</a> 
-                        in <a href={pr_url} className={'text-purple-500 hover:text-purple-500 hover:underline'}>PR #{pr_number}</a>
+                        in <a href={pr_url} className={'text-blue-500 hover:text-purple-500 hover:underline'}>PR #{pr_number}</a>
                     </p>
                 </div>
             </div>
@@ -28,13 +28,13 @@ const classNameIcon = (category: string) => {
         case 'NEW':
             return 'text-green-500';
         case 'FIX':
-            return 'text-red-500';
+            return 'text-orange-600';
         case 'IMPROVEMENT':
             return 'text-blue-600';
         case 'balance':
             return 'yellow-200';
         default:
-            return ;
+            return 'text-white';
     }
 }
 const determineIcon = (category: string) => {
