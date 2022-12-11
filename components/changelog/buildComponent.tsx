@@ -27,7 +27,7 @@ const BuildComponent = (props: Build) => {
             <li className={'py-3 sm:py-4'}>
                 <div className={'flex items-center space-x-4'}>
                     <div className={'shrink-0'}>
-
+                        
                     </div>
                     <div className={'min-w-fit flex-1'}>
                         <p className={'text-center text-gray-500'}>This build has no registered changes :(</p>
@@ -35,12 +35,11 @@ const BuildComponent = (props: Build) => {
                 </div>
             </li>
     }
-
     return (
         <div className={'max-w-xl min-w-sm'}>
             <Card>
                 <div className={'mb-4 flex justify-between'}>
-                    <h5 className="text-xl font-bold leading-none text-white">
+                    <h5 className="text-xl font-bold leading-none text-yellow-300">
                         Build: {version_number}
                     </h5>
                     <h5 className="text-xl font-bold leading-none text-white">

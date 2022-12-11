@@ -29,6 +29,4 @@ const ChangelogResultsPage = (props: ChangelogResultsPageProps) => {
         </>)
 }
 
-
-
 export default ChangelogResultsPage;
