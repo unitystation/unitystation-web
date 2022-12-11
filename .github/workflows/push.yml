@@ -42,6 +42,16 @@ jobs:
         if: github.ref == 'refs/heads/master'
         steps:
             -   uses: actions/checkout@v3
+            -   uses: setup-node@v3
+                with:
+                    node-version: 18.x
+            -   name: Install plugins
+                run: |
+                    npm install @semantic-release/commit-analyzer -D
+                    npm install @semantic-release/release-notes-generator -D
+                    npm install @semantic-release/changelog -D
+                    npm install @semantic-release/git -D
+                    npm install @semantic-release/github -D
             -   uses: codfish/semantic-release-action@v2
                 env:
                     GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
