@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/unitystation/unitystation-web/compare/v1.0.0...v1.1.0) (2022-12-13)
+
+
+### Features
+
+* adds a clown that will float around on your screen ([#19](https://github.com/unitystation/unitystation-web/issues/19)) ([93cddf2](https://github.com/unitystation/unitystation-web/commit/93cddf2f4666b387261d68529deeb808d5333948))
+
 # 1.0.0 (2022-12-11)
 
 
