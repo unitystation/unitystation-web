@@ -5,12 +5,15 @@ import Container from '../components/layout/container';
 import Navigation from '../components/navigation';
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
+import '../styles/clown.css'
+import Clown from "../components/clown/clown";
 config.autoAddCss = false
 
 function MyApp({Component, pageProps}: AppProps) {
     return (
         <>
             <Background>
+                <Clown></Clown>
                 <Container>
                     <Navigation/>
                     <Component {...pageProps} />
