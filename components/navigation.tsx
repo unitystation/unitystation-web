@@ -13,6 +13,10 @@ const Navigation = () => {
                 </li>
 
                 <li>
+                    <StyledLink href="/blog" className="px-3 py-2 rounded-lg">Blog</StyledLink>
+                </li>
+
+                <li>
                     <StyledLink href="/changelog" className="px-3 py-2 rounded-lg">Changelog</StyledLink>
                 </li>
 
