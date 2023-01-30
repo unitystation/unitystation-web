@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/unitystation/unitystation-web/compare/v1.1.0...v1.2.0) (2023-01-30)
+
+
+### Features
+
+* **blog:** first iteration of blog page ([500d360](https://github.com/unitystation/unitystation-web/commit/500d360a9898a2d046f9ab5ce8faa182c6f1fb12))
+
 # [1.1.0](https://github.com/unitystation/unitystation-web/compare/v1.0.0...v1.1.0) (2022-12-13)
 
 
