@@ -1,8 +1,10 @@
 import {NextPage} from "next";
-import FlexPageContainer from "../components/layout/prefabs/flexPageContainer";
 import {useEffect, useState} from "react";
 import Post from "../components/blog/post";
 import {BlogPostsResponse} from "../types/blogPostsResponse";
+import Head from "next/head";
+
+
 
 const Blog: NextPage = () => {
     const [posts, setPosts] = useState({} as BlogPostsResponse);
@@ -18,6 +20,24 @@ const Blog: NextPage = () => {
 
     return (
         <>
+            <Head>
+                <title key={'title'}>Unitystation - Blog</title>
+                <meta
+                    key='description'
+                    name='description'
+                    content='The Unitystation Blog is a place where we post about the development of Unitystation, our community, and other things related to the game!'
+                />
+                <meta
+                    key='og:title'
+                    property='og:title'
+                    content='Unitystation - Blog'
+                />
+                <meta
+                    key='og:description'
+                    property='og:description'
+                    content='The Unitystation Blog is a place where we post about the development of Unitystation, our community, and other things related to the game!'
+                />
+            </Head>
             <main className={'pt-8 pb-16 lg:pt-16 lg:pb-24'}>
                 <div className={'flex px-4 mx-auto max-w-screen-xl '}>
                     {!loading && <div>
