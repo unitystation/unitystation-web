@@ -16,9 +16,9 @@ const Post = (props: BlogPost) => {
                                 <h1 className="mb-4 text-4xl text-center font-extrabold leading-tight lg:mb-6 text-white">
                                     {title}
                                 </h1>
-                                <a href="#" rel="author" className="text-xl font-bold text-white">by {author}</a>
+                                <p className="text-xl font-bold text-white">by {author}</p>
                                 <p className="text-base font-light text-gray-500 dark:text-gray-400">
-                                    <time dateTime={date_created.toString()} title={date_created.toString()}>
+                                    <time dateTime={date_created?.toString()} title={date_created?.toString()}>
                                         {toAgoTime(date_created)}
                                     </time>
                                 </p>
@@ -27,7 +27,7 @@ const Post = (props: BlogPost) => {
                     </address>
                 </header>
                 <div className={'flex flex-col'}>
-                    {sections.map((section, index) => {
+                    {!!sections && sections.map((section, index) => {
                         return (
                             <Section
                                 key={index}
