@@ -4,6 +4,8 @@ import FluidMainContainer from '../components/layout/prefabs/fixedFluidFixed/flu
 import ChangelogResultsPage from '../components/changelog/changelogResultsPage';
 import {AllChangesResponse} from '../types/allChangesResponse';
 import {useEffect, useState} from 'react';
+import Head from "next/head";
+
 
 
 const initialResponse: AllChangesResponse = {
@@ -41,6 +43,19 @@ const Changelog: NextPage = () => {
 
     return (
         <>
+            <Head>
+                <title key="title">Unitystation - Changelog</title>
+                <meta
+                    key="description"
+                    name="description"
+                    content="Find all the changes we have pushed to Unitystation here!"/>
+                <meta key="og:title" property="og:title" content="Unitystation - Changelog"/>
+                <meta
+                    key="og:description"
+                    property="og:description"
+                    content="Find all the changes we have pushed to Unitystation here!"/>
+                <meta key="og:url" property="og:url" content="https://unitystation.org/changelog"/>
+            </Head>
             <FlexPageContainer>
                 <FluidMainContainer>
                     <div className={'w-full flex flex-col items-center justify-center'}>
