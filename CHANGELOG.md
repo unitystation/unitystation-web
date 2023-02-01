@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/unitystation/unitystation-web/compare/v1.3.0...v1.3.1) (2023-02-01)
+
+
+### Bug Fixes
+
+* improved meta tags ([caecda1](https://github.com/unitystation/unitystation-web/commit/caecda14e05cc237ca1b9a866e3958ffd8de62de))
+
 # [1.3.0](https://github.com/unitystation/unitystation-web/compare/v1.2.0...v1.3.0) (2023-02-01)
 
 
