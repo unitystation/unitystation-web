@@ -1,3 +1,11 @@
+# [1.3.0](https://github.com/unitystation/unitystation-web/compare/v1.2.0...v1.3.0) (2023-02-01)
+
+
+### Features
+
+* added basic metadata with OpenGraph protocol ([e823bb6](https://github.com/unitystation/unitystation-web/commit/e823bb6379136fa97cb056fa8103b1df4ab3bbb1))
+* **blog:** new dynamic page to display a single blog post ([bc7bd40](https://github.com/unitystation/unitystation-web/commit/bc7bd407d51a7f9bbb3ab558683a4ef888577246))
+
 # [1.2.0](https://github.com/unitystation/unitystation-web/compare/v1.1.0...v1.2.0) (2023-01-30)
 
 
