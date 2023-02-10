@@ -15,7 +15,7 @@ const ChangeComponent = (props: Change) => {
                         {description}
                     </p>
                     <p className="text-sm text-gray-400">
-                        contributed by <a href={author_url} className={'text-gray-400 hover:text-gray-500 hover:underline'}>{author_username}</a> 
+                        contributed by <a href={author_url} className={'text-gray-400 hover:text-gray-500 hover:underline'}>{author_username} </a> 
                         in <a href={pr_url} className={'text-blue-500 hover:text-purple-500 hover:underline'}>PR #{pr_number}</a>
                     </p>
                 </div>
