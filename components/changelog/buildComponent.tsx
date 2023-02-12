@@ -36,21 +36,19 @@ const BuildComponent = (props: Build) => {
         <>
             <br></br>
             <div className={'max-w-xl min-w-sm'}>
-                <Card>
-                    <div className={'mb-4 flex justify-between'}>
+                <div className={'mb-4 flex justify-between'}>
                         <h5 className="text-xl font-bold leading-none text-white">
                             Build: {version_number}
                         </h5>
                         <h5 className="text-xl font-bold leading-none text-white">
                             Date: {date_created}
                         </h5>
-                    </div>
+                </div>
                     <div className="flow-root">
                         <ul className="divide-y divide-gray-700">
                             {changesList}
                         </ul>
-                    </div>
-                </Card>
+                </div>
             </div>
             <br></br>
         </>
