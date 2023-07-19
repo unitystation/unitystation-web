@@ -1,3 +1,17 @@
+# [1.8.0](https://github.com/unitystation/unitystation-web/compare/v1.7.0...v1.8.0) (2023-07-19)
+
+
+### Bug Fixes
+
+* readded external link icon and opening in new tab ([72232e7](https://github.com/unitystation/unitystation-web/commit/72232e772df7414dd467311750bc7dff1346054a))
+
+
+### Features
+
+* add hero image behind the call to action button ([1801c98](https://github.com/unitystation/unitystation-web/commit/1801c9820bf41b9295ced30cb047de4a6b31f645))
+* add vercel analytics ([3b46c00](https://github.com/unitystation/unitystation-web/commit/3b46c000a60f3c481e2d7a3051051bb6bd171f3c))
+* finish home page and rewrite site in nextjs 13 ([dd83f0b](https://github.com/unitystation/unitystation-web/commit/dd83f0b131cc782e0890705d47779cdbb6c4c66c))
+
 # [1.7.0](https://github.com/unitystation/unitystation-web/compare/v1.6.0...v1.7.0) (2023-05-11)
 
 
