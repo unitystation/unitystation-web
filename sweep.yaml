@@ -10,6 +10,7 @@ rules:
 - "Do not use unnecessary imports."
 - "Use meaningful variable and function names."
 - "All commits should use the conventional commit format."
+- "All PR names should also use the conventional commit format."
 
 # This is the branch that Sweep will develop from and make pull requests to. Most people use 'main' or 'master' but some users also use 'dev' or 'staging'.
 branch: 'main'
