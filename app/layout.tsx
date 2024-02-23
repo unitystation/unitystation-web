@@ -4,6 +4,7 @@ import Clown from "./clown/clown";
 import {Metadata} from "next";
 import DefaultNavbar from "./common/defaultNavbar";
 import { Analytics } from '@vercel/analytics/react';
+import type { Viewport } from 'next'
 
 export const metadata: Metadata = {
     title: 'Unitystation - The Space Station 13 Remake Made in Unity',
@@ -20,9 +21,7 @@ export const metadata: Metadata = {
         'roleplaying game',
     ],
     description: 'Unitystation is a free and open-source chaotic multiplayer role-playing and simulation game made in Unity. Remake of the cult classic Space Station 13.',
-    colorScheme: 'dark',
     authors: {name: 'Unitystation Team', url: 'https://github.com/unitystation'},
-    viewport: {width: "device-width", initialScale: 1},
     robots: {follow: true, index: true},
     openGraph: {
         type: 'website',
@@ -36,6 +35,12 @@ export const metadata: Metadata = {
             },
         ]
     }
+}
+
+export const viewport: Viewport = {
+    themeColor: 'black',
+    width: 'device-width',
+    initialScale: 1,
 }
 
 export default function RootLayout({children,}: { children: React.ReactNode; }) {
