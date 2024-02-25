@@ -1,5 +1,5 @@
 'use client';
-import Button from "../common/uiLibrary/button";
+import LinkButton from "../common/uiLibrary/linkButton";
 import {useEffect, useState} from "react";
 import getDownloadLink from "../../utils/platform";
 import {GITHUB_RELEASES_URL} from "../../utils/urlContants";
@@ -16,7 +16,7 @@ const DownloadButtonClient = () => {
 
     return (
         <div className={'flex flex-col lg:flex-row justify-center mt-8 gap-4'}>
-            <Button className="shadow-2xl" filled={true} text={'Download'} linkTo={downloadLink} iconRight={BiSolidDownload} />
+            <LinkButton className="shadow-2xl" filled={true} text={'Download'} linkTo={downloadLink} iconRight={BiSolidDownload} />
         </div>
     )
 }
