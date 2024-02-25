@@ -33,7 +33,7 @@ const LoginPage = () => {
 
                         <div className="text-center">
                             <a href="/register" className="text-sm text-gray-500 hover:text-blue-600 hover:underline">
-                                Don't have an account?
+                                Don&apos;t have an account?
                             </a>
                             <br/>
                             <a href="/reset-password"
