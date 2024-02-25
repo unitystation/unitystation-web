@@ -1,17 +1,32 @@
 'use client';
 
-import {Navbar} from 'flowbite-react';
-import React from "react";
+import {Dropdown, Navbar} from 'flowbite-react';
+import React, {useContext} from "react";
 import {GoLinkExternal} from "react-icons/go";
+import {AuthorizerContext} from "../../context/authorizerContext";
 
 const playerWiki = 'https://wiki.unitystation.org'
 const devWiki = 'https://unitystation.github.io/unitystation/'
 
 export default function DefaultNavbar() {
+    const {isLoggedIn, encryptedToken, account} = useContext(AuthorizerContext);
+    const username = account?.username;
+
     return (
         <Navbar fluid rounded className="dark:bg-gray-900">
             <Navbar.Brand/>
             <Navbar.Toggle/>
+
+            <div className="flex md:order-2">
+                <Dropdown label={username || 'Account'} color='#1F2937' >
+                    {!isLoggedIn && <Dropdown.Item href="/login">Login/register</Dropdown.Item>}
+                    {isLoggedIn && <Dropdown.Item>My Account</Dropdown.Item>}
+                    {isLoggedIn && <Dropdown.Item href="/logout">Logout</Dropdown.Item>}
+                    <Dropdown.Divider/>
+                    <Dropdown.Item href="/reset-password">Reset password</Dropdown.Item>
+                </Dropdown>
+            </div>
+
             <Navbar.Collapse>
                 <Navbar.Link href="/">
                     <p>Home</p>
