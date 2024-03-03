@@ -9,8 +9,8 @@ const playerWiki = 'https://wiki.unitystation.org'
 const devWiki = 'https://unitystation.github.io/unitystation/'
 
 export default function DefaultNavbar() {
-    const {isLoggedIn, encryptedToken, account} = useContext(AuthorizerContext);
-    const username = account?.username;
+    const {isLoggedIn, authContext, error} = useContext(AuthorizerContext);
+    const username = authContext?.account.username;
 
     return (
         <Navbar fluid rounded className="dark:bg-gray-900">

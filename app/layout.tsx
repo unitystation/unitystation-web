@@ -3,8 +3,8 @@ import React from "react";
 import Clown from "./clown/clown";
 import {Metadata} from "next";
 import DefaultNavbar from "./common/defaultNavbar";
-import { Analytics } from '@vercel/analytics/react';
-import type { Viewport } from 'next'
+import {Analytics} from '@vercel/analytics/react';
+import type {Viewport} from 'next'
 import {Providers} from "./providers";
 
 export const metadata: Metadata = {
@@ -49,12 +49,12 @@ export default function RootLayout({children,}: { children: React.ReactNode; }) 
     return (
         <html>
         <body className="dark">
-            <Clown/>
-            <Providers>
-                <DefaultNavbar/>
-                {children}
-            </Providers>
-            <Analytics />
+        <Clown/>
+        <Providers >
+            <DefaultNavbar/>
+            {children}
+        </Providers>
+        <Analytics/>
         </body>
         </html>
     )
