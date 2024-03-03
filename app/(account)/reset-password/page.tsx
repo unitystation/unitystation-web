@@ -22,7 +22,7 @@ const ResetPasswordPage = () => {
             <h3 className="text-lg text-center font-medium text-green-800">Success!</h3>
             <p>An email has been sent with instructions to reset your password.</p>
             <p>Please check your inbox and follow the instructions to complete the process.</p>
-            <p>Didn't receive the email? Check your Spam folder or try resending the email. Ensure your email address is
+            <p>Didn&apos;t receive the email? Check your Spam folder or try resending the email. Ensure your email address is
                 entered correctly.</p>
         </div>
     );

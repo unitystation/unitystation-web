@@ -1,3 +1,5 @@
+import {FieldError, GeneralError} from "../lib/errors";
+
 export interface AccountPublicData {
     unique_identifier: string;
     username: string;
@@ -10,13 +12,9 @@ export interface LoginResponse {
     token: string;
 }
 
-export interface LoginWithCredentialsRequest {
-    email: string;
-    password: string;
-}
-
 export interface AuthContext {
     isLoggedIn: boolean;
-    account?: AccountPublicData;
-    encryptedToken?: string;
+    authContext?: LoginResponse;
+    error?: GeneralError | FieldError;
+    revalidateAuth: () => void;
 }
