@@ -49,7 +49,7 @@ const LoginPage = () => {
                             Loading...
                         </div>
                     }
-                    <FormContainer onSubmit={(e) => e.preventDefault()} title='Login'>
+                    <FormContainer action={handleSubmit} title='Login'>
                         {state.error && isGeneralError(state.error) && errorMessage(state.error.error)}
 
                         <TextField
@@ -83,7 +83,7 @@ const LoginPage = () => {
                             }
                         />
 
-                        <Button onClick={handleSubmit} className="mt-4 w-full" filled>Log in</Button>
+                        <Button type='submit' className="mt-4 w-full" filled>Log in</Button>
 
                         <AlternativeActions
                             links={
