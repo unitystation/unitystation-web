@@ -1,20 +1,16 @@
 "use client"
 
 import {useContext, useEffect} from "react";
-import {logout} from "../../../lib/auth/authorization";
 import {redirect} from "next/navigation";
-import {AuthorizerContext} from "../../../context/authorizerContext";
+import {AuthorizerContext} from "../../../context/AuthorizerContextProvider";
 
 const LogoutPage = () => {
-
-    const {revalidateAuth} = useContext(AuthorizerContext);
+    const authState = useContext(AuthorizerContext);
 
     useEffect(() => {
-        logout().then(_ => {
-                revalidateAuth();
-                redirect("/");
-            }
-        );
+        authState.logout().then(() => {
+            redirect("login");
+        });
     }, []);
 }
 

@@ -3,14 +3,37 @@
 import {Dropdown, Navbar} from 'flowbite-react';
 import React, {useContext} from "react";
 import {GoLinkExternal} from "react-icons/go";
-import {AuthorizerContext} from "../../context/authorizerContext";
+import {AuthorizerContext} from "../../context/AuthorizerContextProvider";
+import Link from "next/link";
+
 
 const playerWiki = 'https://wiki.unitystation.org'
 const devWiki = 'https://unitystation.github.io/unitystation/'
 
 export default function DefaultNavbar() {
-    const {isLoggedIn, authContext, error} = useContext(AuthorizerContext);
-    const username = authContext?.account.username;
+    const {state} = useContext(AuthorizerContext);
+    const username = state.authContext?.account.username;
+
+    const loggedOptions = () => (
+        <>
+            <Dropdown.Item>My Account</Dropdown.Item>
+            <Dropdown.Item>
+                <Link href='logout'>Logout</Link>
+            </Dropdown.Item>
+        </>
+    )
+
+    const notLoggedOptions = () => (
+        <>
+            <Dropdown.Item>
+                <Link href='login'>Login/Register</Link>
+            </Dropdown.Item>
+            <Dropdown.Divider/>
+            <Dropdown.Item>
+                <Link href='reset-password'>Reset password</Link>
+            </Dropdown.Item>
+        </>
+    )
 
     return (
         <Navbar fluid rounded className="dark:bg-gray-900">
@@ -18,25 +41,21 @@ export default function DefaultNavbar() {
             <Navbar.Toggle/>
 
             <div className="flex md:order-2">
-                <Dropdown label={username || 'Account'} color='#1F2937' >
-                    {!isLoggedIn && <Dropdown.Item href="/login">Login/register</Dropdown.Item>}
-                    {isLoggedIn && <Dropdown.Item>My Account</Dropdown.Item>}
-                    {isLoggedIn && <Dropdown.Item href="/logout">Logout</Dropdown.Item>}
-                    <Dropdown.Divider/>
-                    <Dropdown.Item href="/reset-password">Reset password</Dropdown.Item>
+                <Dropdown label={username || 'Account'} color='#1F2937'>
+                    {state.isLoggedIn ? loggedOptions() : notLoggedOptions()}
                 </Dropdown>
             </div>
 
             <Navbar.Collapse>
-                <Navbar.Link href="/">
+                <Link href='/'>
                     <p>Home</p>
-                </Navbar.Link>
-                <Navbar.Link href="/blog">
+                </Link>
+                <Link href='blog'>
                     <p>Blog</p>
-                </Navbar.Link>
-                <Navbar.Link href="/changelog">
+                </Link>
+                <Link href='changelog'>
                     <p>Changelog</p>
-                </Navbar.Link>
+                </Link>
                 <Navbar.Link href={playerWiki} target="_blank">
                     <div className="flex flex-row gap-1">
                         <p>Player&apos;s wiki</p>

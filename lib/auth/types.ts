@@ -1,4 +1,4 @@
-import {FieldError, GeneralError} from "../lib/errors";
+import {FieldError, GeneralError} from "./guards";
 
 export interface AccountPublicData {
     unique_identifier: string;
@@ -12,9 +12,14 @@ export interface LoginResponse {
     token: string;
 }
 
-export interface AuthContext {
+export interface AuthState {
     isLoggedIn: boolean;
     authContext?: LoginResponse;
     error?: GeneralError | FieldError;
-    revalidateAuth: () => void;
+}
+
+export interface AuthContext {
+    state: AuthState;
+    credentialsLogin: (email: string, password: string) => Promise<void>;
+    logout: () => Promise<void>;
 }
