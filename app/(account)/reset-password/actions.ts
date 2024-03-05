@@ -34,7 +34,6 @@ export const resendMailConfirmationToken = async (prevState: ResendMailResponse,
             body: JSON.stringify({ email }),
         });
 
-        console.log(prevState)
         if (!response.ok) {
             return { success: false, email: email, message: 'An unexpected error occurred'};
         }

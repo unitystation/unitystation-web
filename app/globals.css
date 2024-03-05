@@ -10,7 +10,7 @@ html, body {
     color: white;
 }
 
-body{
+body {
     background-image: url("https://unitystationfile.b-cdn.net/Website-Statics/layer1.png");
 }
 
@@ -32,4 +32,36 @@ a {
     left: 0;
     box-shadow: var(--tw-shadow);
     pointer-events: none;
+}
+
+.dot {
+    width: 40px;
+    height: 40px;
+    background-color: whitesmoke;
+    border-radius: 50%;
+    margin: 0 10px;
+    animation: dotAnimation 1.5s infinite cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+@keyframes dotAnimation {
+    0%, 100% {
+        transform: translateY(0);
+        opacity: 0.2;
+    }
+    50% {
+        transform: translateY(-20px);
+        opacity: 1;
+    }
+}
+
+.dot:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.dot:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.dot:nth-child(3) {
+    animation-delay: 1s;
 }
