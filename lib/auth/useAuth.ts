@@ -1,78 +1,97 @@
 "use client"
 
 import {useEffect, useState} from "react";
-import {LoginResponse} from "../../types/authTypes";
-import {FieldError, GeneralError, isLoginResponse} from "../errors";
-import {decryptAuthContext, loginWithToken, logout} from "./authorization";
-import {tryGetSessionCookie, setSessionCookie} from "./session";
+import {AuthContext} from "./types";
+import {isFieldError, isGeneralError, isLoginResponse} from "./guards";
+import {serverRequestLoginWithCredentials, serverTrySessionLogin, serverLogout} from "./authorization";
+import {z} from "zod";
 
+export const useAuth = () : AuthContext => {
 
-export const useAuth = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [authContext, setAuthContext] = useState<LoginResponse | undefined>();
-    const [error, setError] = useState<GeneralError | FieldError | undefined>();
-
-    const getLoggedInState = async (isMounted: boolean) => {
-        const sessionCookie = tryGetSessionCookie();
-        if (!sessionCookie.success) {
-            isMounted && setIsLoggedIn(false);
-            return;
-        }
-
-        try {
-            const decrypted = await decryptAuthContext(sessionCookie.value!);
-            console.log("session cookie", sessionCookie);
-            console.log("decrypted", decrypted);
-
-            const response = await loginWithToken(decrypted.token);
-            if (isLoginResponse(response)) {
-                isMounted && setIsLoggedIn(true);
-                isMounted && setAuthContext(response);
-                await refreshAuthContext(isMounted);
-            } else {
-                isMounted && setIsLoggedIn(false);
-                isMounted && setError(response);
-                await logout();
+    const [state, setState] = useState<AuthContext>(
+        {
+            state: {
+                isLoggedIn: false,
+                authContext: undefined,
+                error: undefined,
+            },
+            credentialsLogin: async (email: string, password: string) => {
+                throw new Error("Credentials Login was not served.")
+            },
+            logout: async () => {
+                throw new Error("Logout was not served.")
             }
-        } catch (e) {
-            isMounted && setIsLoggedIn(false);
-            isMounted && setError({error: 'Unexpected error occurred', status: 500});
-            await logout();
         }
-    };
+    );
 
-    const refreshAuthContext = async (isMounted: boolean) => {
-        if (!isMounted) {
+    const clientRequestLoginWithCredentials = async (email: string, password: string) => {
+        const schema = z.object({
+            email: z.string().email(),
+            password: z.string().min(6),
+        });
+
+        const parsed = schema.safeParse(
+            {  email, password}
+        );
+
+        if (!parsed.success) {
+            const fieldErrors = parsed.error.errors.reduce((acc, curr) => ({...acc, [curr.path[0]]: curr.message}), {})
+            setState({...state, state: {isLoggedIn: false, authContext: undefined, error: {error: fieldErrors, status: 400}}})
             return;
         }
 
-        const sessionCookie = tryGetSessionCookie();
-        if (!sessionCookie.success) {
+        const response = await serverRequestLoginWithCredentials(parsed.data.email, parsed.data.password);
+        if (isLoginResponse(response)) {
+
+            setState({...state, state: {isLoggedIn: true, authContext: response, error: undefined}})
             return;
+        } else {
+            if (isGeneralError(response)) {
+                setState({...state, state: {isLoggedIn: false, authContext: undefined, error: response}})
+                return;
+            }
+
+            if (isFieldError(response)) {
+                setState({...state, state: {isLoggedIn: false, authContext: undefined, error: response}})
+                return;
+            }
         }
 
-        const decrypted = await decryptAuthContext(sessionCookie.value!);
-        if (!isLoginResponse(decrypted)) {
-            return;
-        }
-
-        const response = await loginWithToken(decrypted.token);
-        if (!isLoginResponse(response)) {
-            return;
-        }
-
-        await setSessionCookie(response);
-    };
+        setState({...state, state: {isLoggedIn: false, authContext: undefined, error: {error: "Unexpected error happened", status: 500}}})
+    }
+    const clientRequestLogout = async () => {
+        setState({...state, state: {isLoggedIn: false, authContext: undefined, error: undefined}})
+        await serverLogout();
+    }
 
     useEffect(() => {
-        let isMounted = true;
+        const trySessionLogin = async () => {
+            const response = await serverTrySessionLogin();
 
-        getLoggedInState(isMounted);
+            if (isLoginResponse(response)) {
+                setState({...state, state: {isLoggedIn: true, authContext: response, error: undefined}});
+                return;
+            }
 
-        return () => {
-            isMounted = false;
-        };
+            if (isGeneralError(response)) {
+                setState({...state, state: {isLoggedIn: false, authContext: undefined, error: response}});
+                return;
+            }
+
+            if (isFieldError(response)) {
+                setState({...state, state: {isLoggedIn: false, authContext: undefined, error: response}});
+                return;
+            }
+
+            setState({...state, state: {isLoggedIn: false, authContext: undefined}});
+        }
+
+        trySessionLogin().then();
     }, []);
 
-    return {isLoggedIn, authContext, error};
+    return {
+        ...state,
+        credentialsLogin: clientRequestLoginWithCredentials,
+        logout: clientRequestLogout
+    };
 };

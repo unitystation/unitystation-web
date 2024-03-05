@@ -5,7 +5,7 @@ import {Metadata} from "next";
 import DefaultNavbar from "./common/defaultNavbar";
 import {Analytics} from '@vercel/analytics/react';
 import type {Viewport} from 'next'
-import {Providers} from "./providers";
+import Providers from "../context/providers";
 
 export const metadata: Metadata = {
     title: 'Unitystation - The Space Station 13 Remake Made in Unity',

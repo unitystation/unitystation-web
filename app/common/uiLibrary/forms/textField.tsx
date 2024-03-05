@@ -17,6 +17,7 @@ const TextField = (props: TextFieldProps) => {
                 <Label htmlFor={props.id} value={props.label}/>
             </div>
             <TextInput
+                value={props.value}
                 className='w-full'
                 id={props.id}
                 name={props.name}
@@ -25,6 +26,7 @@ const TextField = (props: TextFieldProps) => {
                 required={props.required}
                 shadow={shadow}
                 helperText={props.helperText}
+                onChange={props.onChange}
             />
         </div>
     )

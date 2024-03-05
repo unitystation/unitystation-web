@@ -1,4 +1,4 @@
-import {LoginResponse} from "../types/authTypes";
+import {LoginResponse} from "./types";
 
 interface ErrorBase {
     status: number;
