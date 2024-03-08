@@ -1,3 +1,22 @@
+# [1.9.0](https://github.com/unitystation/unitystation-web/compare/v1.8.0...v1.9.0) (2024-03-08)
+
+
+### Bug Fixes
+
+* submitting login works with enter again ([a7cfedb](https://github.com/unitystation/unitystation-web/commit/a7cfedb88e07cd274917a53a93207739e2ddf921))
+
+
+### Features
+
+* add new auth context provider to handle authentication state application wide ([dec6c17](https://github.com/unitystation/unitystation-web/commit/dec6c1723dfb111339ed7b5331c8cb190faa4c94))
+* add new login and register pages (still non-functional) ([5f63c24](https://github.com/unitystation/unitystation-web/commit/5f63c2435f9e84b384282fe47a87d04aafeca514))
+* add page to confirm your mail after registering ([#68](https://github.com/unitystation/unitystation-web/issues/68)) ([c2f8d98](https://github.com/unitystation/unitystation-web/commit/c2f8d982407d0214eef16993360c9a8fdf574b05))
+* allow panel to receive props such as className from outside ([0d7d26e](https://github.com/unitystation/unitystation-web/commit/0d7d26eee287f6847e56182fff28993ee54df478))
+* functional login ([b4d74e8](https://github.com/unitystation/unitystation-web/commit/b4d74e84a5993a3cea0bae04553d07546256a589))
+* functional password reset ([3685893](https://github.com/unitystation/unitystation-web/commit/3685893d5751dbdcb9237169db491d7f7c8b0555))
+* functional register ([226f67d](https://github.com/unitystation/unitystation-web/commit/226f67dd46d49b9828c1bd7775d5afa13e54768b))
+* safe sessions handling in server with communication to central command ([2b9e133](https://github.com/unitystation/unitystation-web/commit/2b9e13375d155f948d896328230087848f8b01dd))
+
 # [1.8.0](https://github.com/unitystation/unitystation-web/compare/v1.7.0...v1.8.0) (2023-07-19)
 
 
