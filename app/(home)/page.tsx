@@ -49,7 +49,7 @@ const fetchLatestBlogPost = async (): Promise<BlogPost[]> => {
     return resPage1.results.concat(resPage2.results);
 }
 
-const HomePage: () => Promise<JSX.Element> = async () => {
+const HomePage = async () => {
 
     const latestBlogPosts: BlogPost[] = await fetchLatestBlogPost();
     const NoSsrHeroImageClient = dynamic(() => import('./HeroRandomImageClient'), {ssr: false});
