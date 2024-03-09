@@ -1,0 +1,86 @@
+"use client"
+
+
+import {useParams} from "next/navigation";
+import React from "react";
+import FormContainer from "../../../common/uiLibrary/Layouters/formContainer";
+import TextField from "../../../common/uiLibrary/forms/textField";
+import Button from "../../../common/uiLibrary/Button";
+import {useFormState} from "react-dom";
+import {postPasswordReset, ResetPasswordStep2Response} from "./actions";
+import {isFieldError} from "../../../../lib/auth/guards";
+
+const ResetPasswordPageStep2 = () => {
+    const {token} = useParams<{token: string}>();
+    const initialState: ResetPasswordStep2Response = {
+        success: false,
+        error: undefined
+    }
+
+    const [state, formAction] = useFormState(postPasswordReset, initialState);
+
+    const successMessage = () => (
+        <div className='flex flex-col gap-4'>
+            <h3 className="text-lg text-center font-medium text-green-800">Success!</h3>
+            <p>Your password has been reset successfully.</p>
+            <p>You can now log in using your new password.</p>
+        </div>
+    );
+
+    const errorMessage = () => {
+        return (
+            <div className='flex flex-col gap-4'>
+                <h3 className="text-lg text-center font-medium text-red-700">Oops!</h3>
+                <p>There was an unexpected error while trying to reset your password.</p>
+                <p>Please try again later or contact us.</p>
+            </div>
+        )
+    }
+
+    return (
+        <div className='flex flex-col' style={{minHeight: 'calc(100vh - 60px)'}}>
+            <div className='flex-grow relative'>
+                <FormContainer action={formAction} title='Reset your password'>
+                    {state.success ? successMessage() : errorMessage()}
+
+                    <TextField
+                        label='New password'
+                        type='password'
+                        id='password'
+                        name='password'
+                        placeholder='********'
+                        required
+                        shadow
+                        helperText={state.error && isFieldError(state.error) && state.error?.error.password &&
+                        <div className='text-red-700'>
+                            {state.error?.error.password}
+                        </div>
+                    }
+                    />
+
+                    <TextField
+                        label='Confirm your password'
+                        type='password'
+                        id='password2'
+                        name='password2'
+                        placeholder='********'
+                        required
+                        shadow
+                        helperText={state.error && isFieldError(state.error) && state.error?.error.password2 &&
+                        <div className='text-red-700'>
+                            {state.error?.error.password2}
+                        </div>
+                    }
+                    />
+
+                    <input type='hidden' id='password' name='token' value={token} />
+
+                    <Button type="submit" className="mt-4 w-full" filled>Reset Password</Button>
+
+                </FormContainer>
+            </div>
+        </div>
+    )
+}
+
+export default ResetPasswordPageStep2;
