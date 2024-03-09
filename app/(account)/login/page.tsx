@@ -11,6 +11,7 @@ import {AuthorizerContext} from "../../../context/AuthorizerContextProvider";
 import {isFieldError, isGeneralError} from "../../../lib/auth/guards";
 import GenericLoading from "../../common/uiLibrary/genericLoading";
 import {redirect} from "next/navigation";
+import FullPage from "../../common/uiLibrary/Layouters/fullPage";
 
 const LoginPage = () => {
     const {state, credentialsLogin} = useContext(AuthorizerContext);
@@ -41,7 +42,7 @@ const LoginPage = () => {
 
     const loginForm = () => {
         return (
-            <div className='flex flex-col' style={{minHeight: 'calc(100vh - 60px)'}}>
+            <FullPage>
                 <div className='flex-grow relative'>
                     {isLoading &&
                         <div className='absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center bg-black bg-opacity-70 z-10'>
@@ -90,14 +91,14 @@ const LoginPage = () => {
                                 [
                                     {link: '/register', linkText: 'Don\'t have an account?'},
                                     {link: '/reset-password', linkText: 'Forgot your password?'},
-                                    {link: '/resend-confirmation-email', linkText: 'Haven\'t received confirmation email yet?'},
+                                    {link: '/resend-confirm-email', linkText: 'Haven\'t received confirmation email yet?'},
                                 ]
                             }
                         />
                     </FormContainer>
                 </div>
                 <ContactInformation/>
-            </div>
+            </FullPage>
         )
     }
 

@@ -9,6 +9,7 @@ import Button from "../../../common/uiLibrary/Button";
 import {useFormState} from "react-dom";
 import {postPasswordReset, ResetPasswordStep2Response} from "./actions";
 import {isFieldError} from "../../../../lib/auth/guards";
+import FullPage from "../../../common/uiLibrary/Layouters/fullPage";
 
 const ResetPasswordPageStep2 = () => {
     const {token} = useParams<{ token: string }>();
@@ -79,13 +80,13 @@ const ResetPasswordPageStep2 = () => {
     }
 
     return (
-        <div className='flex flex-col' style={{minHeight: 'calc(100vh - 60px)'}}>
+        <FullPage>
             <div className='flex-grow relative'>
                 <FormContainer action={formAction} title='Reset your password'>
                     {state.success ? successMessage() : resetPasswordForm()}
                 </FormContainer>
             </div>
-        </div>
+        </FullPage>
     )
 }
 
