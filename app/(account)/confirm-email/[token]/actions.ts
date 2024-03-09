@@ -1,5 +1,7 @@
 "use server"
 
+import {isFieldError, isGeneralError} from "../../../../lib/auth/guards";
+
 export const postMailConfirmationToken = async (token: string): Promise<any> => {
     try {
         const response = await fetch(`${process.env.CC_API_URL}/accounts/confirm-account`, {
@@ -13,12 +15,12 @@ export const postMailConfirmationToken = async (token: string): Promise<any> => 
         if (!response.ok) {
             const errorResponse = await response.json();
             if (errorResponse.error) {
-                if (typeof errorResponse.error === 'string') {
-                    return { error: errorResponse.error };
-                } else if (errorResponse.error.token) {
+                if (isGeneralError(errorResponse.error)) {
+                    return { error: "An unexpected error occurred." };
+                }
+
+                if (isFieldError(errorResponse.error) && errorResponse.error.token) {
                     return { error: errorResponse.error.token.join(' ') };
-                } else if (errorResponse.error.non_field_errors) {
-                    return { error: errorResponse.error.non_field_errors.join(' ') };
                 }
             }
             return { error: "An unexpected error occurred." };
