@@ -3,14 +3,14 @@
 import {revalidatePath} from "next/cache";
 import {z} from "zod";
 
-export interface ResendMailResponse {
+export interface ResetPassowrdStep1 {
     success: boolean;
     email?: string;
     message?: string;
     fieldErrors?: { [key: string]: string };
 }
 
-export const requestAPasswordReset = async (prevState: ResendMailResponse, formData : FormData): Promise<ResendMailResponse> => {
+export const requestAPasswordReset = async (_: ResetPassowrdStep1, formData : FormData): Promise<ResetPassowrdStep1> => {
     const schema = z.object({
         email: z.string().email(),
     });
