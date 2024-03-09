@@ -89,7 +89,8 @@ const LoginPage = () => {
                             links={
                                 [
                                     {link: '/register', linkText: 'Don\'t have an account?'},
-                                    {link: '/reset-password', linkText: 'Forgot your password?'}
+                                    {link: '/reset-password', linkText: 'Forgot your password?'},
+                                    {link: '/resend-confirmation-email', linkText: 'Haven\'t received confirmation email yet?'},
                                 ]
                             }
                         />
