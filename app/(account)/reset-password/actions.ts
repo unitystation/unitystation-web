@@ -10,7 +10,7 @@ export interface ResendMailResponse {
     fieldErrors?: { [key: string]: string };
 }
 
-export const resendMailConfirmationToken = async (prevState: ResendMailResponse, formData : FormData): Promise<ResendMailResponse> => {
+export const requestAPasswordReset = async (prevState: ResendMailResponse, formData : FormData): Promise<ResendMailResponse> => {
     const schema = z.object({
         email: z.string().email(),
     });
@@ -26,7 +26,7 @@ export const resendMailConfirmationToken = async (prevState: ResendMailResponse,
     const email = parsed.data.email;
 
     try {
-        const response = await fetch(`${process.env.CC_API_URL}/accounts/resend-account-confirmation/asd`, {
+        const response = await fetch(`${process.env.CC_API_URL}/accounts/reset-password/`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
