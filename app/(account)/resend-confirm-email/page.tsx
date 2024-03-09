@@ -50,8 +50,8 @@ const ResendConfirmationMail = () => {
             <h3 className="text-lg text-center font-medium text-green-800">Success!</h3>
             <p>Your request has been processed successfully. If your account is found in our system and the email
                 address you provided matches our records, we have sent a confirmation email to that address.</p>
-            <p>Please check your inbox for the confirmation email. If you don't receive it within a few minutes, check
-                your spam or junk folder. For further assistance, don't hesitate to contact us.</p>
+            <p>Please check your inbox for the confirmation email. If you don&apos;t receive it within a few minutes, check
+                your spam or junk folder. For further assistance, don&apos;t hesitate to contact us.</p>
         </div>
     );
 
