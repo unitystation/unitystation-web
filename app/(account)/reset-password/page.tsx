@@ -4,7 +4,7 @@ import Button from "../../common/uiLibrary/Button";
 import React from "react";
 import FormContainer from "../../common/uiLibrary/Layouters/formContainer";
 import TextField from "../../common/uiLibrary/forms/textField";
-import {resendMailConfirmationToken, ResendMailResponse} from "./actions";
+import {requestAPasswordReset, ResendMailResponse} from "./actions";
 import {useFormState} from "react-dom";
 import ContactInformation from "../../(home)/contactInformation";
 
@@ -15,14 +15,14 @@ const initialState: ResendMailResponse = {
 };
 
 const ResetPasswordPage = () => {
-    const [state, formAction] = useFormState(resendMailConfirmationToken, initialState);
+    const [state, formAction] = useFormState(requestAPasswordReset, initialState);
 
     const successMessage = () => (
         <div className='flex flex-col gap-4'>
             <h3 className="text-lg text-center font-medium text-green-800">Success!</h3>
             <p>An email has been sent with instructions to reset your password.</p>
             <p>Please check your inbox and follow the instructions to complete the process.</p>
-            <p>Didn&apos;t receive the email? Check your Spam folder or try resending the email. Ensure your email address is
+            <p>Didn&apos;t receive the email? Check your Spam folder or try requesting a password reset again. Ensure your email address is
                 entered correctly.</p>
         </div>
     );
