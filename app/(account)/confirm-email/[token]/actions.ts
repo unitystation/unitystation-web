@@ -1,6 +1,6 @@
 "use server"
 
-import {isFieldError, isGeneralError} from "../../../../lib/auth/guards";
+import {isFieldError} from "../../../../lib/auth/guards";
 
 export const postMailConfirmationToken = async (token: string): Promise<any> => {
     try {
