@@ -42,7 +42,7 @@ export const postResendConfirmationMail = async (_: ResendConfirmationMailReques
                 return {success: false, error: error};
             }
 
-            throw new Error('Unknown error');
+            return {success: false, error: {error: 'An unexpected error happened', status: 500}};
         }
 
     } catch (e) {
