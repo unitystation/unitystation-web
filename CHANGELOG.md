@@ -1,3 +1,19 @@
+# [1.10.0](https://github.com/unitystation/unitystation-web/compare/v1.9.0...v1.10.0) (2024-03-09)
+
+
+### Bug Fixes
+
+* fix bug where password confirmation field would get the username helper text. ([2d7e47a](https://github.com/unitystation/unitystation-web/commit/2d7e47a15c5e164cf1ba435b16f1a014545dd0fa))
+* fix navbar links being relative instead of absolute path ([1b7d78a](https://github.com/unitystation/unitystation-web/commit/1b7d78af970639e8e767709afa318f0f1c1b1fae))
+* fix wrong URL on reset-password action which caused the process to always fail ([03a7ecb](https://github.com/unitystation/unitystation-web/commit/03a7ecb7e2d63d6f625833edcc23c30f83a56ddf))
+
+
+### Features
+
+* add page to resend confirmation email ([55bc1c2](https://github.com/unitystation/unitystation-web/commit/55bc1c2ac6817def9be89a469983dffff6139765))
+* add page to type your new password as a second step in password-reset process ([79c2118](https://github.com/unitystation/unitystation-web/commit/79c2118d211b4b68d1a788ffdcbe86956da9b8f9))
+* finish reset-password page and functionality ([25f96c7](https://github.com/unitystation/unitystation-web/commit/25f96c74e3672f6383e055e837093e9c3e97bae0))
+
 # [1.9.0](https://github.com/unitystation/unitystation-web/compare/v1.8.0...v1.9.0) (2024-03-08)
 
 
