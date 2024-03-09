@@ -1,5 +1,5 @@
 "use client"
-import {usePathname} from "next/navigation";
+import {useParams} from "next/navigation";
 import {postMailConfirmationToken} from "./actions";
 import React, {useEffect, useState} from "react";
 import Panel from "../../../common/uiLibrary/panel";
@@ -8,7 +8,7 @@ import ContactInformation from "../../../(home)/contactInformation";
 
 const MailConfirmationPage = () => {
     const [response, setResponse] = useState<{ success?: boolean; error?: string }>({});
-    const token = usePathname().split('/').filter(Boolean).pop();
+    const {token} = useParams<{token: string}>();
 
     useEffect(() => {
         const fetchData = async () => {
