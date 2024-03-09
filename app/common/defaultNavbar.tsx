@@ -16,9 +16,10 @@ export default function DefaultNavbar() {
 
     const loggedOptions = () => (
         <>
-            <Dropdown.Item>My Account</Dropdown.Item>
+            {/* hidden while we work on it */}
+            {/*<Dropdown.Item>My Account</Dropdown.Item>*/}
             <Dropdown.Item>
-                <Link href='logout'>Logout</Link>
+                <Link href='/logout'>Logout</Link>
             </Dropdown.Item>
         </>
     )
@@ -26,11 +27,11 @@ export default function DefaultNavbar() {
     const notLoggedOptions = () => (
         <>
             <Dropdown.Item>
-                <Link href='login'>Login/Register</Link>
+                <Link href='/login'>Login/Register</Link>
             </Dropdown.Item>
             <Dropdown.Divider/>
             <Dropdown.Item>
-                <Link href='reset-password'>Reset password</Link>
+                <Link href='/reset-password'>Reset password</Link>
             </Dropdown.Item>
         </>
     )
@@ -50,10 +51,10 @@ export default function DefaultNavbar() {
                 <Link href='/'>
                     <p>Home</p>
                 </Link>
-                <Link href='blog'>
+                <Link href='/blog'>
                     <p>Blog</p>
                 </Link>
-                <Link href='changelog'>
+                <Link href='/changelog'>
                     <p>Changelog</p>
                 </Link>
                 <Navbar.Link href={playerWiki} target="_blank">
