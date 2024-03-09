@@ -2,8 +2,9 @@
 import {usePathname} from "next/navigation";
 import {postMailConfirmationToken} from "./actions";
 import React, {useEffect, useState} from "react";
-import Panel from "../../common/uiLibrary/panel";
-import ContactInformation from "../../(home)/contactInformation";
+import Panel from "../../../common/uiLibrary/panel";
+import ContactInformation from "../../../(home)/contactInformation";
+
 
 const MailConfirmationPage = () => {
     const [response, setResponse] = useState<{ success?: boolean; error?: string }>({});
