@@ -108,12 +108,10 @@ const RegisterPage = () => {
                     placeholder='********'
                     shadow
                     required
-                    helperText={(state.error && isFieldError(state.error) && state.error?.error.password2) ?
+                    helperText={(state.error && isFieldError(state.error) && state.error?.error.password2) &&
                         <div className='text-red-700'>
                             {state.error?.error.password2}
                         </div>
-                        :
-                        usernameHelperText()
                     }
                 />
 
