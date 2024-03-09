@@ -1,4 +1,6 @@
-import {FieldError, GeneralError} from "../../../../lib/auth/guards";
+"use server"
+
+import {FieldError, GeneralError, isFieldError, isGeneralError} from "../../../../lib/auth/guards";
 import {z} from "zod";
 
 export interface ResetPasswordStep2Response {
@@ -55,11 +57,19 @@ export const postPasswordReset = async (_: ResetPasswordStep2Response, formData:
         });
 
         if (!response.ok) {
-            return { success: false, error: {status: 400, error: {password: ['An unexpected error occurred']}}};
+            if (isFieldError(response) && response.error.token) {
+                return {success: false, error: {status: 400, error: "Your link has expired. Please request a new one."}};
+            }
+
+            if (isFieldError(response) || isGeneralError(response)) {
+                return {success: false, error: response};
+            }
+
+            return { success: false, error: {status: 400, error: "An unexpected error occurred"}};
         }
 
         return { success: true};
     } catch (error) {
-        return { success: false, error: {status: 400, error: {password: ['An unexpected error occurred']}}};
+        return { success: false, error: {status: 400, error: "An unexpected error occurred"}};
     }
 }
