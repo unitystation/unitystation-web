@@ -4,11 +4,11 @@ import Button from "../../common/uiLibrary/Button";
 import React from "react";
 import FormContainer from "../../common/uiLibrary/Layouters/formContainer";
 import TextField from "../../common/uiLibrary/forms/textField";
-import {requestAPasswordReset, ResendMailResponse} from "./actions";
+import {requestAPasswordReset, ResetPassowrdStep1} from "./actions";
 import {useFormState} from "react-dom";
 import ContactInformation from "../../(home)/contactInformation";
 
-const initialState: ResendMailResponse = {
+const initialState: ResetPassowrdStep1 = {
     success: false,
     message: undefined,
     email: ''
