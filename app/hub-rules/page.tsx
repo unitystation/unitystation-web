@@ -3,7 +3,7 @@ import FullPage from "../common/uiLibrary/Layouters/fullPage"
 const HubRules = async () => {
     return (
         <FullPage>
-            <main className={'flex flex-col ck-content items-center justify-center pt-8 px-4 mx-auto max-w-screen-xl '}>
+            <main className={'flex flex-col items-center justify-center pt-8 px-4 mx-auto max-w-screen-xl '}>
                 <div className="pt-8 pr-4 pl-4 format format-sm sm:format-base lg:format-lg format-invert bg-gray-900 bg-opacity-75">
                     <h1 className="text-4xl font-bold mb-4 text-center">Stationhub Rules</h1>
                     <p className="mb-4 text-center">This document specifies the rules that need to be followed when listing your community on our official server hub. If you are not sure whether something is allowed, or you think that something that is not allowed by the current rules should be allowed, feel free to contact us. We will clarify and possibly amend the rules.</p>
