@@ -31,7 +31,7 @@ const HubRules = async () => {
                             We draw the line at what encapsulates a <em>“community”</em> on a case-by-case basis. This is based on shared branding, community spaces (e.g., Discord), infrastructure, and staff. For example, if you are a host that merely provides infrastructure for another community, you will get some degree of separation from said community. However, severe enough offenses may still make us come to you.
                             </p>
                             <p className="mb-4">
-                                When deciding whether an issue is your community’s fault, we will look at factors such as:
+                                When deciding whether an issue is your community`s fault, we will look at factors such as:
                             </p>
                             <ul className="list-disc list-inside mb-4 text-left pl-5">
                                 <li>The status of the perpetrators in your community</li>
