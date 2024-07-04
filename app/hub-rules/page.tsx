@@ -70,7 +70,7 @@ const HubRules = async () => {
                                 <ul className="list-disc list-inside text-left pl-5">
                                     <li>In order to keep Unitystation as a project and global community safe, we follow EU laws and regulations. We expect you to comply with them as well regardless of where you live. Actions that are considered illegal may include, but are not limited to:
                                     <ul className="list-disc list-inside text-left pl-5">
-                                        <li>Hosting content or facilitating activities that promote discrimination, hostility, or violence against individuals or groups based on identity or individual characteristics such as race, ethnicity, religion, or sexual orientation,</li>
+                                        <li>Hosting content or facilitating activities that promote discrimination, hostility, or violence against individuals or groups based on identity or individual characteristics such as gender, race, ethnicity, religion, or sexual orientation,</li>
                                         <li>Network attacks such as distributed denial of service or unauthorized access,</li>
                                         <li>Collecting data without user consent,</li>
                                         <li>Distribution of malware,</li>
