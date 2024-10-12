@@ -1,3 +1,12 @@
+# [1.11.0](https://github.com/unitystation/unitystation-web/compare/v1.10.0...v1.11.0) (2024-10-12)
+
+
+### Features
+
+* added button to go to blog posts from the latest news section ([0019de3](https://github.com/unitystation/unitystation-web/commit/0019de39f00cda32c0bb671beae48739de78aca8))
+* remove unneeded margin ([9729be4](https://github.com/unitystation/unitystation-web/commit/9729be40fbd4a84f3e69723786c5d847c5bb05a3))
+* slight redesign of landing page ([9fb157b](https://github.com/unitystation/unitystation-web/commit/9fb157bd90752560e461091f2339ae27dd7e7bc4))
+
 # [1.10.0](https://github.com/unitystation/unitystation-web/compare/v1.9.0...v1.10.0) (2024-03-09)
 
 
