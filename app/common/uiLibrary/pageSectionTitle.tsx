@@ -11,7 +11,7 @@ const PageSectionTitle = (props: PageSectionTitleProps) => {
 
     return (
 
-        <p className={classNames('mb-4 text-3xl text-center font-bold leading-tight lg:mb-6 text-white', extraClasses)}>
+        <p className={classNames('text-3xl text-center font-bold leading-tight text-white', extraClasses)}>
             {children}
         </p>
     )
