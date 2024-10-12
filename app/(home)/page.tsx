@@ -50,26 +50,27 @@ const fetchLatestBlogPost = async (): Promise<BlogPost[]> => {
 }
 
 const HomePage = async () => {
-
     const latestBlogPosts: BlogPost[] = await fetchLatestBlogPost();
-    const NoSsrHeroImageClient = dynamic(() => import('./HeroRandomImageClient'), {ssr: false});
+    const NoSsrHomebannerClient = dynamic(() => import('./HomeBannerClient'), { ssr: false });
 
     return (
         <>
-            <PageSection className="gap-16">
-                <NoSsrHeroImageClient>
-                    <LandingText mainText={mainText} secondaryText={secondaryText}/>
-                    <DownloadButtonClient/>
-                    <LandingButtonsServer/>
-                </NoSsrHeroImageClient>
-                <FeaturesList features={features}/>
-            </PageSection>
-            <PageSection verticalCenter={false}>
-                <LatestNews posts={latestBlogPosts}/>
-            </PageSection>
+            <div className="flex flex-col justify-center gap-6">
+                <div className="flex-[1]">
+                    <NoSsrHomebannerClient>
+                        <LandingText mainText={mainText} secondaryText={secondaryText}/>
+                        <DownloadButtonClient/>
+                        <LandingButtonsServer/>
+                    </NoSsrHomebannerClient>
+                </div>
+                <div className="flex-[1]">
+                    <LatestNews posts={latestBlogPosts}/>
+                </div>
+            </div>
+
             <ContactInformation/>
         </>
-    )
-}
+    );
+};
 
 export default HomePage;
