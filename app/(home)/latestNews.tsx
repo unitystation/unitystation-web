@@ -2,7 +2,7 @@ import {BlogPost} from "../../types/blogPost";
 import classNames from "classnames";
 import Container from "../common/uiLibrary/container";
 import PageSectionTitle from "../common/uiLibrary/pageSectionTitle";
-import Button from "../common/uiLibrary/Button";
+import LinkButton from "../common/uiLibrary/linkButton";
 
 interface PostPreviewCardProps {
     post: BlogPost,
@@ -110,9 +110,7 @@ const LatestNews = (props: LatestNewsProps) => {
                         </div>
                     </div>
                     <div className="flex justify-end px-20">
-                        <Button filled={false} >
-                            Read More
-                        </Button>
+                        <LinkButton filled={false} text="Read More" linkTo="/blog" />
                     </div>
                 </div>
             </Container>
