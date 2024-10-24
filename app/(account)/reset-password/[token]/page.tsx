@@ -2,11 +2,10 @@
 
 
 import {useParams} from "next/navigation";
-import React from "react";
+import React, {useActionState} from "react";
 import FormContainer from "../../../common/uiLibrary/Layouters/formContainer";
 import TextField from "../../../common/uiLibrary/forms/textField";
 import Button from "../../../common/uiLibrary/Button";
-import {useFormState} from "react-dom";
 import {postPasswordReset, ResetPasswordStep2Response} from "./actions";
 import {isFieldError} from "../../../../lib/auth/guards";
 import FullPage from "../../../common/uiLibrary/Layouters/fullPage";
@@ -18,7 +17,7 @@ const ResetPasswordPageStep2 = () => {
         error: undefined
     }
 
-    const [state, formAction] = useFormState(postPasswordReset, initialState);
+    const [state, formAction] = useActionState(postPasswordReset, initialState);
 
     const successMessage = () => (
         <div className='flex flex-col gap-4'>

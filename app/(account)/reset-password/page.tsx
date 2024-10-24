@@ -1,11 +1,10 @@
 'use client'
 
 import Button from "../../common/uiLibrary/Button";
-import React from "react";
+import React, {useActionState} from "react";
 import FormContainer from "../../common/uiLibrary/Layouters/formContainer";
 import TextField from "../../common/uiLibrary/forms/textField";
 import {requestAPasswordReset, ResetPassowrdStep1} from "./actions";
-import {useFormState} from "react-dom";
 import ContactInformation from "../../(home)/contactInformation";
 
 const initialState: ResetPassowrdStep1 = {
@@ -15,7 +14,7 @@ const initialState: ResetPassowrdStep1 = {
 };
 
 const ResetPasswordPage = () => {
-    const [state, formAction] = useFormState(requestAPasswordReset, initialState);
+    const [state, formAction] = useActionState(requestAPasswordReset, initialState);
 
     const successMessage = () => (
         <div className='flex flex-col gap-4'>
