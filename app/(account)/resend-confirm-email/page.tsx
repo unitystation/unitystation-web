@@ -5,9 +5,8 @@ import FormContainer from "../../common/uiLibrary/Layouters/formContainer";
 import TextField from "../../common/uiLibrary/forms/textField";
 import Button from "../../common/uiLibrary/Button";
 import ContactInformation from "../../(home)/contactInformation";
-import React from "react";
+import React, {useActionState} from "react";
 import FullPage from "../../common/uiLibrary/Layouters/fullPage";
-import {useFormState} from "react-dom";
 import {postResendConfirmationMail, ResendConfirmationMailRequest} from "./actions";
 
 const ResendConfirmationMail = () => {
@@ -15,7 +14,7 @@ const ResendConfirmationMail = () => {
         success: false,
     }
 
-    const [state, formAction] = useFormState(postResendConfirmationMail, initialState);
+    const [state, formAction] = useActionState(postResendConfirmationMail, initialState);
 
     const resendForm = () => {
         return (

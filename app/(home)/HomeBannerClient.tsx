@@ -18,13 +18,6 @@ const images: string[] = [
 
 let currentIndex = 0;
 
-const shuffleImages = () => {
-    for (let i = images.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [images[i], images[j]] = [images[j], images[i]];
-    }
-};
-
 const getNextImage = () => {
     currentIndex = (currentIndex + 1) % images.length;
     return images[currentIndex];
@@ -32,8 +25,6 @@ const getNextImage = () => {
 
 const HomeBannerClient = (props: layoutChildren) => {
     const {children} = props;
-
-    shuffleImages();
 
     const [image1, setImage1] = useState<string>(getNextImage());
     const [image2, setImage2] = useState<string>(getNextImage());
