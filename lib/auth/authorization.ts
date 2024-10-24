@@ -3,37 +3,37 @@
 import {LoginResponse} from "./types";
 import {EncryptJWT, jwtDecrypt, jwtVerify, SignJWT} from "jose";
 import {isLoginResponse, parseError} from "./guards";
-import {cookies} from "next/headers";
+import { cookies, type UnsafeUnwrappedCookies } from "next/headers";
 import {redirect} from "next/navigation";
 
 const secretText = `${process.env.SECRET}`;
 const secretKey = Buffer.from(secretText, 'base64');
 
-export const tryGetSessionCookie = (): { success: boolean, value?: string } => {
-    try {
-        const sessionCooke = cookies().get("session")?.value;
-        if (sessionCooke) {
-            return { success: true, value: sessionCooke };
-        }
-    } catch (e) {
-        return { success: false };
+export const tryGetSessionCookie = async (): Promise<{ success: boolean, value?: string }> => {
+    const cookiesManager = await  cookies();
+    const sessionCookie = cookiesManager.get("session")?.value;
+
+    if (sessionCookie) {
+        return { success: true, value: sessionCookie };
     }
 
     return { success: false };
 }
 
 export const setSessionCookie = async (payload: LoginResponse) => {
-    cookies().set("session", await encryptSessionData(payload), {
+    const cookiesManager = await cookies();
+    cookiesManager.set("session", await encryptSessionData(payload), {
         httpOnly: true,
         expires: new Date(Date.now() + 1000 * 60 * 60 * 24)
     });
 }
 
-export const destroySessionCookie = () => {
-    cookies().set("session", "", {
+export const destroySessionCookie = async () => {
+    const cookiesManager = await cookies();
+    cookiesManager.set("session", "", {
         httpOnly: true,
         expires: new Date(0)
-    });
+    })
 }
 
 export const encryptSessionData = async (payload: LoginResponse) => {
@@ -96,7 +96,7 @@ export const serverRequestLoginWithToken = async (token: string) => {
 }
 
 export const serverTrySessionLogin = async () => {
-    const sessionCookie = tryGetSessionCookie();
+    const sessionCookie = await tryGetSessionCookie();
     if (sessionCookie.success) {
         const payload = await decryptSessionData(sessionCookie.value!);
         if (isLoginResponse(payload)) {

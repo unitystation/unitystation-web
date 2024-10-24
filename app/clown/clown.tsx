@@ -13,7 +13,7 @@ const Clown = () => {
     const [dirX, setDirX] = useState(1);
     const [dirY, setDirY] = useState(1);
     const [timesClicked, setTimesClicked] = useState(0);
-    const audioRef: RefObject<HTMLAudioElement> = React.createRef();
+    const audioRef: RefObject<HTMLAudioElement | null> = React.createRef();
 
     const handleClick = () => {
         audioRef.current!.play();

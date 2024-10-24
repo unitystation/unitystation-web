@@ -1,12 +1,12 @@
 "use client"
 
-import React from "react";
+import React, {useActionState} from "react";
 import Button from "../../common/uiLibrary/Button";
 import FormContainer from "../../common/uiLibrary/Layouters/formContainer";
 import TextField from "../../common/uiLibrary/forms/textField";
 import AlternativeActions from "../../common/uiLibrary/forms/alternativeActions";
 import ContactInformation from "../../(home)/contactInformation";
-import {useFormState} from "react-dom";
+import "react-dom";
 import {registerAccount, RegisterResponse} from "./actions";
 import {isFieldError} from "../../../lib/auth/guards";
 import { useFormStatus } from "react-dom";
@@ -18,7 +18,7 @@ const RegisterPage = () => {
         success: false,
         error: undefined
     }
-    const [state, formAction] = useFormState(registerAccount, initialState);
+    const [state, formAction] = useActionState(registerAccount, initialState);
 
     const uniqueIdHelperText = () =>
         <>

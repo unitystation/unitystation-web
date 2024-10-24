@@ -32,7 +32,7 @@ const setMetadata = (post: BlogPost) => {
 
 const PostPage = async (query: PageParams) => {
 
-    const {slug} = query.params;
+    const {slug} = await query.params;
     const post: BlogPost = await fetchPost(slug as string);
     setMetadata(post);
 
