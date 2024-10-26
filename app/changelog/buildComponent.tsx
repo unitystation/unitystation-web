@@ -1,7 +1,7 @@
 import Build from "../../types/build";
 import Change from "../../types/change";
 import ChangeComponent from "./changeComponent";
-import React from "react";
+import React, { useState } from "react";
 import Panel from "../common/uiLibrary/panel";
 
 function populateChangeList(changes: Change[]) {
@@ -36,12 +36,53 @@ interface BuildProps {
 }
 
 const BuildComponent = (props: BuildProps) => {
-    const {version_number, date_created, changes} = props.build;
+    const { version_number, date_created, changes } = props.build;
     const changesList = populateChangeList(changes);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+    const platforms = [
+        "linuxserver",
+        "StandaloneLinux64",
+        "StandaloneOSX",
+        "StandaloneWindows64"
+    ];
+
+    const renderDownloadSection = () => {
+        return (
+            <div className="relative mt-2 flex justify-end">
+                <button
+                    onClick={toggleDropdown}
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded"
+                >
+                    Download
+                </button>
+                {isDropdownOpen && (
+                    <div className="absolute right-0 mt-12 w-56 rounded-md shadow-lg bg-slate-600 ring-1 ring-black ring-opacity-5">
+                        <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                            {platforms.map((platform) => (
+                                <a
+                                    key={platform}
+                                    href={`https://unitystationfile.b-cdn.net/UnityStationDevelop/${platform}/${version_number}.zip`}
+                                    className="block px-4 py-2 text-sm text-blue-50 hover:bg-gray-100 hover:text-gray-900"
+                                    role="menuitem"
+                                >
+                                    {platform}
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+                )}
+            </div>
+        );
+    };
+
+    const toggleDropdown = () => {
+        setIsDropdownOpen(!isDropdownOpen);
+    };
 
     return (
         <Panel>
-            <div className={'flex justify-between'}>
+            <div className='flex justify-between'>
                 <h5 className="lg:text-xl font-bold leading-none text-white">
                     Build: {version_number}
                 </h5>
@@ -54,6 +95,7 @@ const BuildComponent = (props: BuildProps) => {
                     {changesList}
                 </ul>
             </div>
+            {renderDownloadSection()}
         </Panel>
     )
 }
