@@ -17,7 +17,7 @@ const ChangelogPage = () => {
     const [buildsResponse, setBuildsResponse] = useState<AllChangesResponse>();
     const [builds, setBuilds] = useState<Build[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
-    const INITIAL_PAGE = "https://changelog.unitystation.org/all-changes?limit=3";
+    const INITIAL_PAGE = "https://changelog.unitystation.org/all-changes?limit=5";
 
     useEffect(() => {
         fetchChangelog(INITIAL_PAGE).then((response) => {
