@@ -1,8 +1,11 @@
 import Build from "../../types/build";
 import Change from "../../types/change";
 import ChangeComponent from "./changeComponent";
-import React, { useState } from "react";
+import React, {useEffect, useRef, useState} from "react";
 import Panel from "../common/uiLibrary/panel";
+import Button from "../common/uiLibrary/Button";
+import {BiSolidChevronDown} from "react-icons/bi";
+import classNames from "classnames";
 
 function populateChangeList(changes: Change[]) {
     let changesList;
@@ -35,10 +38,12 @@ interface BuildProps {
     build: Build
 }
 
-const BuildComponent = (props: BuildProps) => {
-    const { version_number, date_created, changes } = props.build;
-    const changesList = populateChangeList(changes);
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+//TODO: make this component a general dropdown instead and move it to commons
+const DownloadBuildDropdown = (props: { version: string }) => {
+    'use client'
+
+    const [isOpen, setIsOpen] = useState(false);
+    const dropdownRef = useRef<HTMLDivElement>(null);
 
     const platforms = [
         "linuxserver",
@@ -47,38 +52,59 @@ const BuildComponent = (props: BuildProps) => {
         "StandaloneWindows64"
     ];
 
-    const renderDownloadSection = () => {
-        return (
-            <div className="relative mt-2 flex justify-end">
-                <button
-                    onClick={toggleDropdown}
-                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded"
-                >
-                    Download
-                </button>
-                {isDropdownOpen && (
-                    <div className="absolute right-0 mt-12 w-56 rounded-md shadow-lg bg-slate-600 ring-1 ring-black ring-opacity-5">
-                        <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-                            {platforms.map((platform) => (
-                                <a
-                                    key={platform}
-                                    href={`https://unitystationfile.b-cdn.net/UnityStationDevelop/${platform}/${version_number}.zip`}
-                                    className="block px-4 py-2 text-sm text-blue-50 hover:bg-gray-100 hover:text-gray-900"
-                                    role="menuitem"
-                                >
-                                    {platform}
-                                </a>
-                            ))}
-                        </div>
-                    </div>
-                )}
-            </div>
-        );
+    const listClasses = classNames(
+        'absolute top-full mt-2 w-56 rounded-md shadow-lg bg-slate-600 ring-1 ring-black ring-opacity-5 transition-opacity transition-transform duration-500 ease-out',
+        {
+            'opacity-100 translate-y-0': isOpen,
+            'opacity-0 -translate-y-4 pointer-events-none': !isOpen
+        }
+    );
+
+    const handleClick = () => {
+        setIsOpen(!isOpen);
+    }
+
+    const handleClickOutside = (event: MouseEvent) => {
+        if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+            setIsOpen(false);
+        }
     };
 
-    const toggleDropdown = () => {
-        setIsDropdownOpen(!isDropdownOpen);
-    };
+    useEffect(() => {
+        if (isOpen) {
+            document.addEventListener('mousedown', handleClickOutside);
+        } else {
+            document.removeEventListener('mousedown', handleClickOutside);
+        }
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, [isOpen]);
+
+    return (
+        <div className="relative" ref={dropdownRef}>
+            <Button upperCase={false} iconRight={BiSolidChevronDown} onClick={handleClick}>
+                Download
+            </Button>
+            <div className={listClasses}>
+                <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                    {platforms.map((platform) => (
+                        <a
+                            key={platform}
+                            href={`https://unitystationfile.b-cdn.net/UnityStationDevelop/${platform}/${props.version}.zip`}
+                            className="block px-4 py-2 text-sm text-blue-50 hover:bg-gray-100 hover:text-gray-900"
+                            role="menuitem"
+                        >
+                            {platform}
+                        </a>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+}
+
+const BuildComponent = (props: BuildProps) => {
+    const { version_number, date_created, changes } = props.build;
+    const changesList = populateChangeList(changes);
 
     return (
         <Panel>
@@ -95,7 +121,9 @@ const BuildComponent = (props: BuildProps) => {
                     {changesList}
                 </ul>
             </div>
-            {renderDownloadSection()}
+            <div className='relative mt-2 flex justify-end'>
+                <DownloadBuildDropdown version={version_number}  />
+            </div>
         </Panel>
     )
 }
