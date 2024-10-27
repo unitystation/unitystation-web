@@ -1,3 +1,16 @@
+# [1.12.0](https://github.com/unitystation/unitystation-web/compare/v1.11.0...v1.12.0) (2024-10-27)
+
+
+### Bug Fixes
+
+* stupidly fix changelog page not loading enough builds to create the scrollbar ([a871f56](https://github.com/unitystation/unitystation-web/commit/a871f5654d7b010b1e18fb824ced75ac0b46cd88))
+
+
+### Features
+
+* Button component now supports choosing uppercase and side icons. ([1151eab](https://github.com/unitystation/unitystation-web/commit/1151eabdacad7dfdcfe859d26d359c16840eba5d))
+* close dropdown after clicking on an element ([bf4e98e](https://github.com/unitystation/unitystation-web/commit/bf4e98e90decc286f7308c948b4a6cfd48631bea))
+
 # [1.11.0](https://github.com/unitystation/unitystation-web/compare/v1.10.0...v1.11.0) (2024-10-12)
 
 
