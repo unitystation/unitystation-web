@@ -7,7 +7,7 @@ import { cookies, type UnsafeUnwrappedCookies } from "next/headers";
 import {redirect} from "next/navigation";
 
 const secretText = `${process.env.SECRET}`;
-const secretKey = Buffer.from(secretText, 'base64');
+const secretKey = Uint8Array.from(Buffer.from(secretText, 'base64'));
 
 export const tryGetSessionCookie = async (): Promise<{ success: boolean, value?: string }> => {
     const cookiesManager = await  cookies();
