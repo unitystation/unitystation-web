@@ -1,4 +1,4 @@
-import UAParser from 'ua-parser-js';
+import {UAParser} from 'ua-parser-js';
 import GithubReleaseResponse from '../types/githubReleaseResponse';
 
 function getUserPlatform(): string | undefined {
