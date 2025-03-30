@@ -14,7 +14,7 @@ const colourByType: Dict<string> = {
 
 const textByType: Dict<string> = {
     'announcement': 'Announcement',
-    'weekly': 'Weekly Update',
+    'weekly': 'Progress Update',
     'community': 'Community Highlight',
 }
 
