@@ -64,7 +64,7 @@ export default function LedgerPresentation() {
 
             <DataTable columns={content.columns} data={content.data} />
 
-            //TODO: make this shit a generic component and stylise it
+            {/*TODO: make this shit a generic component and stylise it*/}
             <div className="flex justify-between p-5">
                 <div className="flex-1">
                     {hasPreviousPage && (

@@ -3,6 +3,7 @@ import classNames from "classnames";
 import Container from "../common/uiLibrary/container";
 import PageSectionTitle from "../common/uiLibrary/pageSectionTitle";
 import LinkButton from "../common/uiLibrary/linkButton";
+import Image from "next/image";
 
 interface PostPreviewCardProps {
     post: BlogPost,
@@ -30,6 +31,7 @@ const PostPreviewImage = ({post, isMain = false, className}: PostPreviewCardProp
     return (
         <div className={classNames(outerContainerStyles, {className})}>
             <div className={innerContainerStyles}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                     src={post.socials_image}
                     alt={post.title}

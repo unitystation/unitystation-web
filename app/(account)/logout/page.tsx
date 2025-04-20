@@ -11,7 +11,7 @@ const LogoutPage = () => {
         authState.logout().then(() => {
             redirect("login");
         });
-    }, []);
+    }, [authState]);
 }
 
 export default LogoutPage;
