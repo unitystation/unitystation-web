@@ -1,6 +1,6 @@
 'use client';
 
-import {createContext, ReactNode, useContext, useEffect, useState} from "react";
+import {createContext, ReactNode, useContext} from "react";
 import {DataTableProps} from "../../components/organisms/DataTable";
 import {LedgerData} from "../../types/ledger/ledgerResponse";
 import {useLedgerApiProvider} from "./LedgerApiProvider";
