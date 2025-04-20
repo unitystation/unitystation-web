@@ -20,7 +20,7 @@ const MailConfirmationPage = () => {
         fetchData().then(r => {
             setResponse(r);
         });
-    }, []);
+    }, [token]);
 
     if (!token) {
         return <main>
