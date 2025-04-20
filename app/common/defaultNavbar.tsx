@@ -57,6 +57,9 @@ export default function DefaultNavbar() {
                 <Link href='/changelog'>
                     <p>Changelog</p>
                 </Link>
+                <Link href='/ledger'>
+                    <p>Ledger</p>
+                </Link>
                 <Navbar.Link href={playerWiki} target="_blank">
                     <div className="flex flex-row gap-1">
                         <p>Player&apos;s wiki</p>
@@ -73,5 +76,3 @@ export default function DefaultNavbar() {
         </Navbar>
     )
 }
-
-
