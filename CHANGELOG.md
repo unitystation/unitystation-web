@@ -1,3 +1,10 @@
+# [1.13.0](https://github.com/unitystation/unitystation-web/compare/v1.12.0...v1.13.0) (2025-03-30)
+
+
+### Features
+
+* changes "Weekly Update" pill's text to "Progress update" ([6845ea6](https://github.com/unitystation/unitystation-web/commit/6845ea6b17fe2701e8fbdc4cecf64d1a1319ec97))
+
 # [1.12.0](https://github.com/unitystation/unitystation-web/compare/v1.11.0...v1.12.0) (2024-10-27)
 
 
