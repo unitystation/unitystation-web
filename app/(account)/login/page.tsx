@@ -64,7 +64,7 @@ const LoginPage = () => {
                                 setEmail(e.target.value)
                             }}
                             helperText={state.error && isFieldError(state.error) && state.error.error.email &&
-                                <div className='text-red-700'>{state.error.error.email}</div>
+                                <span className='text-red-700'>{state.error.error.email}</span>
                             }
                         />
 
@@ -80,7 +80,7 @@ const LoginPage = () => {
                                 setPassword(e.target.value)
                             }}
                             helperText={state.error && isFieldError(state.error) && state.error.error.password &&
-                                <div className='text-red-700'>{state.error.error.password}</div>
+                                <span className='text-red-700'>{state.error.error.password}</span>
                             }
                         />
 
