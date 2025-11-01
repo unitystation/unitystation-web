@@ -1,4 +1,4 @@
-import Change from "../../types/change";
+import Change from "../../../types/change";
 import {IconType} from "react-icons";
 import classNames from "classnames";
 import {FaArrowUp, FaCirclePlus} from "react-icons/fa6";

@@ -1,9 +1,9 @@
 import Link from "next/link";
 import Dict = NodeJS.Dict;
 import {BlogPost} from "../../../types/blogPost";
-import Panel from "../../common/uiLibrary/panel";
+import Panel from "../../../components/molecules/layout/Panel";
 import {toAgoTime} from "../../../utils/timeUtils";
-import Capsule from "../../common/uiLibrary/capsule";
+import Capsule from "../../../components/atoms/Capsule";
 import Section from "./section";
 
 const colourByType: Dict<string> = {

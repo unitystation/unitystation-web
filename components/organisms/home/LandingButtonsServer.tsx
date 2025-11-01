@@ -1,5 +1,5 @@
-import LinkButton from "../common/uiLibrary/linkButton";
-import {DISCORD_INVITE_URL, GITHUB_URL, PATREON_URL} from "../../utils/urlContants";
+import LinkButton from "../../atoms/LinkButton";
+import {DISCORD_INVITE_URL, GITHUB_URL, PATREON_URL} from "../../../utils/urlContants";
 
 
 

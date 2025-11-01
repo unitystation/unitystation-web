@@ -1,11 +1,11 @@
 'use client'
 
-import Button from "../../common/uiLibrary/Button";
+import Button from "../../../components/atoms/Button";
 import React, {useActionState} from "react";
-import FormContainer from "../../common/uiLibrary/Layouters/formContainer";
-import TextField from "../../common/uiLibrary/forms/textField";
+import FormContainer from "../../../components/organisms/layout/FormContainer";
+import TextField from "../../../components/atoms/TextField";
 import {requestAPasswordReset, ResetPassowrdStep1} from "./actions";
-import ContactInformation from "../../(home)/contactInformation";
+import ContactInformation from "../../../components/organisms/home/ContactInformation";
 
 const initialState: ResetPassowrdStep1 = {
     success: false,

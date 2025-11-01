@@ -2,8 +2,8 @@
 import {useParams} from "next/navigation";
 import {postMailConfirmationToken} from "./actions";
 import React, {useEffect, useState} from "react";
-import Panel from "../../../common/uiLibrary/panel";
-import ContactInformation from "../../../(home)/contactInformation";
+import Panel from "../../../../components/molecules/layout/Panel";
+import ContactInformation from "../../../../components/organisms/home/ContactInformation";
 
 
 const MailConfirmationPage = () => {

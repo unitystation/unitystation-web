@@ -1,9 +1,8 @@
-import {BlogPost} from "../../types/blogPost";
+import {BlogPost} from "../../../types/blogPost";
 import classNames from "classnames";
-import Container from "../common/uiLibrary/container";
-import PageSectionTitle from "../common/uiLibrary/pageSectionTitle";
-import LinkButton from "../common/uiLibrary/linkButton";
-import Image from "next/image";
+import Container from "../../molecules/layout/Container";
+import PageSectionTitle from "../../atoms/PageSectionTitle";
+import LinkButton from "../../atoms/LinkButton";
 
 interface PostPreviewCardProps {
     post: BlogPost,

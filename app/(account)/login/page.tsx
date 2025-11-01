@@ -1,17 +1,17 @@
 "use client"
 
 import React, {useContext, useEffect, useState} from "react";
-import Button from "../../common/uiLibrary/Button";
-import AlternativeActions from "../../common/uiLibrary/forms/alternativeActions";
-import FormContainer from "../../common/uiLibrary/Layouters/formContainer";
-import TextField from "../../common/uiLibrary/forms/textField";
-import ContactInformation from "../../(home)/contactInformation";
+import Button from "../../../components/atoms/Button";
+import AlternativeActions from "../../../components/molecules/forms/AlternativeActions";
+import FormContainer from "../../../components/organisms/layout/FormContainer";
+import TextField from "../../../components/atoms/TextField";
+import ContactInformation from "../../../components/organisms/home/ContactInformation";
 
 import {AuthorizerContext} from "../../../context/AuthorizerContextProvider";
 import {isFieldError, isGeneralError} from "../../../lib/auth/guards";
-import GenericLoading from "../../common/uiLibrary/genericLoading";
+import GenericLoading from "../../../components/atoms/GenericLoading";
 import {redirect} from "next/navigation";
-import FullPage from "../../common/uiLibrary/Layouters/fullPage";
+import FullPage from "../../../components/organisms/layout/FullPage";
 
 const LoginPage = () => {
     const {state, credentialsLogin} = useContext(AuthorizerContext);

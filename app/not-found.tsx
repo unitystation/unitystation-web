@@ -1,5 +1,5 @@
-import PageSection from "./common/uiLibrary/pageSection";
-import Panel from "./common/uiLibrary/panel";
+import PageSection from "../components/molecules/layout/PageSection";
+import Panel from "../components/molecules/layout/Panel";
 
 const NotFound = () => {
     return (

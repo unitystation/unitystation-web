@@ -1,6 +1,6 @@
 'use client';
 
-import layoutChildren from "../../types/layoutChildren";
+import layoutChildren from "../../../types/layoutChildren";
 import {useEffect, useState} from "react";
 
 const images: string[] = [

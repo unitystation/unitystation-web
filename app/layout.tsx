@@ -2,7 +2,7 @@ import "./globals.css";
 import React from "react";
 import Clown from "./clown/clown";
 import {Metadata} from "next";
-import DefaultNavbar from "./common/defaultNavbar";
+import DefaultNavbar from "../components/organisms/navigation/DefaultNavbar";
 import {Analytics} from '@vercel/analytics/react';
 import type {Viewport} from 'next'
 import Providers from "../context/providers";
@@ -59,4 +59,3 @@ export default function RootLayout({children,}: { children: React.ReactNode; }) 
         </html>
     )
 }
-

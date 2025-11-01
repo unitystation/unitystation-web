@@ -1,4 +1,4 @@
-import RandomThirdTextClient from "./randomThirdTextClient";
+import RandomThirdTextClient from "../../molecules/home/RandomThirdTextClient";
 
 interface LandingTextProps {
     mainText: string

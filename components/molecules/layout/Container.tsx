@@ -1,6 +1,5 @@
 import LayoutChildren from "../../../types/layoutChildren";
 
-
 export default function Container(props: LayoutChildren) {
     const { children } = props;
 

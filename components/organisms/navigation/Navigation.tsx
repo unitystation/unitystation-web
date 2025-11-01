@@ -1,5 +1,5 @@
-import StyledLink from "./uiLibrary/styledLink";
-import ExternalLink from "./uiLibrary/externalLink";
+import StyledLink from "../../atoms/StyledLink";
+import ExternalLink from "../../atoms/ExternalLink";
 
 const playerWiki = 'https://wiki.unitystation.org'
 const devWiki = 'https://unitystation.github.io/unitystation/'

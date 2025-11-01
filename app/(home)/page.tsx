@@ -1,14 +1,14 @@
-import LandingText from "./landingText";
+import LandingText from "../../components/organisms/home/LandingText";
 import {BlogPost} from "../../types/blogPost";
 import {BlogPostsResponse} from "../../types/blogPostsResponse";
 import FetchOfType from "../../utils/fetchOfType";
-import LandingButtonsServer from "./LandingButtonsServer";
-import DownloadButtonClient from "./DownloadButtonClient";
-import LatestNews from "./latestNews";
-import ContactInformation from "./contactInformation";
+import LandingButtonsServer from "../../components/organisms/home/LandingButtonsServer";
+import DownloadButtonClient from "../../components/organisms/home/DownloadButtonClient";
+import LatestNews from "../../components/organisms/home/LatestNews";
+import ContactInformation from "../../components/organisms/home/ContactInformation";
 import React from "react";
 import dynamic from 'next/dynamic';
-import HomeBannerClient from "./HomeBannerClient";
+import HomeBannerClient from "../../components/organisms/home/HomeBannerClient";
 
 const mainText = "Welcome to Unitystation!";
 const secondaryText = "Free and open-source remake of the cult classic Space Station 13, made in Unity Engine.";

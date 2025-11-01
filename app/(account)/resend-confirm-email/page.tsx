@@ -1,12 +1,12 @@
 "use client"
 
 
-import FormContainer from "../../common/uiLibrary/Layouters/formContainer";
-import TextField from "../../common/uiLibrary/forms/textField";
-import Button from "../../common/uiLibrary/Button";
-import ContactInformation from "../../(home)/contactInformation";
+import FormContainer from "../../../components/organisms/layout/FormContainer";
+import TextField from "../../../components/atoms/TextField";
+import Button from "../../../components/atoms/Button";
+import ContactInformation from "../../../components/organisms/home/ContactInformation";
 import React, {useActionState} from "react";
-import FullPage from "../../common/uiLibrary/Layouters/fullPage";
+import FullPage from "../../../components/organisms/layout/FullPage";
 import {postResendConfirmationMail, ResendConfirmationMailRequest} from "./actions";
 
 const ResendConfirmationMail = () => {

@@ -1,16 +1,16 @@
 "use client"
 
 import React, {useActionState} from "react";
-import Button from "../../common/uiLibrary/Button";
-import FormContainer from "../../common/uiLibrary/Layouters/formContainer";
-import TextField from "../../common/uiLibrary/forms/textField";
-import AlternativeActions from "../../common/uiLibrary/forms/alternativeActions";
-import ContactInformation from "../../(home)/contactInformation";
+import Button from "../../../components/atoms/Button";
+import FormContainer from "../../../components/organisms/layout/FormContainer";
+import TextField from "../../../components/atoms/TextField";
+import AlternativeActions from "../../../components/molecules/forms/AlternativeActions";
+import ContactInformation from "../../../components/organisms/home/ContactInformation";
 import "react-dom";
 import {registerAccount, RegisterResponse} from "./actions";
 import {isFieldError} from "../../../lib/auth/guards";
 import { useFormStatus } from "react-dom";
-import GenericLoading from "../../common/uiLibrary/genericLoading";
+import GenericLoading from "../../../components/atoms/GenericLoading";
 
 const RegisterPage = () => {
 

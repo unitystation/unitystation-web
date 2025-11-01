@@ -2,10 +2,10 @@
 
 import DataTable from "../../components/organisms/DataTable";
 import {useLedgerTableContext} from "../../context/ledger/LedgerDataTableProvider";
-import Container from "../common/uiLibrary/container";
-import PageHeading from "../common/uiLibrary/PageHeading";
+import Container from "../../components/molecules/layout/Container";
+import PageHeading from "../../components/atoms/PageHeading";
 import {useLedgerApiProvider} from "../../context/ledger/LedgerApiProvider";
-import Panel from "../common/uiLibrary/panel";
+import Panel from "../../components/molecules/layout/Panel";
 import {RiPatreonFill} from "react-icons/ri";
 import {FaPaypal} from "react-icons/fa";
 import {PATREON_URL, PAYPAL_DONATION_URL} from "../../utils/urlContants";

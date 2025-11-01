@@ -1,5 +1,5 @@
 import React from "react";
-import Panel from "../common/uiLibrary/panel";
+import Panel from "../../components/molecules/layout/Panel";
 import {IconType} from "react-icons";
 import classNames from "classnames";
 import {FaQuestion} from "react-icons/fa";

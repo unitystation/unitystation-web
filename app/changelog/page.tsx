@@ -3,9 +3,9 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {AllChangesResponse} from "../../types/allChangesResponse";
 import Build from "../../types/build";
-import Container from "../common/uiLibrary/container";
-import PageHeading from "../common/uiLibrary/PageHeading";
-import BuildComponent from "./buildComponent";
+import Container from "../../components/molecules/layout/Container";
+import PageHeading from "../../components/atoms/PageHeading";
+import BuildComponent from "../../components/organisms/changelog/BuildComponent";
 import LoadingBuild from "./loading";
 
 const fetchChangelog = async (url: string): Promise<AllChangesResponse> => {

@@ -1,4 +1,4 @@
-import layoutChildren from "../../../../types/layoutChildren";
+import layoutChildren from "../../../types/layoutChildren";
 
 // makes the view occupy the full page, excluding the header.
 const FullPage = (props: layoutChildren) => {

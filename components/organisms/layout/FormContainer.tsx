@@ -1,7 +1,7 @@
-import layoutChildren from "../../../../types/layoutChildren";
-import Container from "../container";
-import TopMiddlePlacer from "./topMiddlePlacer";
-import Panel from "../panel";
+import layoutChildren from "../../../types/layoutChildren";
+import Container from "../../molecules/layout/Container";
+import TopMiddlePlacer from "./TopMiddlePlacer";
+import Panel from "../../molecules/layout/Panel";
 import React from "react";
 import classNames from "classnames";
 

@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import LayoutChildren from "../../../types/layoutChildren";
+import LayoutChildren from "../../types/layoutChildren";
 
 interface PageHeadingProps extends LayoutChildren{
     isCentered?: boolean;

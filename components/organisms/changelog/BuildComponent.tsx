@@ -1,9 +1,9 @@
-import Build from "../../types/build";
-import Change from "../../types/change";
-import ChangeComponent from "./changeComponent";
+import Build from "../../../types/build";
+import Change from "../../../types/change";
+import ChangeComponent from "../../molecules/changelog/ChangeComponent";
 import React, {useEffect, useRef, useState} from "react";
-import Panel from "../common/uiLibrary/panel";
-import Button from "../common/uiLibrary/Button";
+import Panel from "../../molecules/layout/Panel";
+import Button from "../../atoms/Button";
 import {BiSolidChevronDown} from "react-icons/bi";
 import classNames from "classnames";
 

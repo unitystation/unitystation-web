@@ -3,12 +3,12 @@
 
 import {useParams} from "next/navigation";
 import React, {useActionState} from "react";
-import FormContainer from "../../../common/uiLibrary/Layouters/formContainer";
-import TextField from "../../../common/uiLibrary/forms/textField";
-import Button from "../../../common/uiLibrary/Button";
+import FormContainer from "../../../../components/organisms/layout/FormContainer";
+import TextField from "../../../../components/atoms/TextField";
+import Button from "../../../../components/atoms/Button";
 import {postPasswordReset, ResetPasswordStep2Response} from "./actions";
 import {isFieldError} from "../../../../lib/auth/guards";
-import FullPage from "../../../common/uiLibrary/Layouters/fullPage";
+import FullPage from "../../../../components/organisms/layout/FullPage";
 
 const ResetPasswordPageStep2 = () => {
     const {token} = useParams<{ token: string }>();

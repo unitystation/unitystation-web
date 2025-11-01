@@ -1,4 +1,4 @@
-import {DISCORD_INVITE_URL} from "../../utils/urlContants";
+import {DISCORD_INVITE_URL} from "../../../utils/urlContants";
 import {BsDiscord} from "react-icons/bs";
 import {MdEmail} from "react-icons/md";
 import React from "react";

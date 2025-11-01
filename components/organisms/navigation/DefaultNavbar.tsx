@@ -3,7 +3,7 @@
 import {Dropdown, Navbar} from 'flowbite-react';
 import React, {useContext} from "react";
 import {GoLinkExternal} from "react-icons/go";
-import {AuthorizerContext} from "../../context/AuthorizerContextProvider";
+import {AuthorizerContext} from "../../../context/AuthorizerContextProvider";
 import Link from "next/link";
 
 

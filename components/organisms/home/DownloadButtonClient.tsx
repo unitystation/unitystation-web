@@ -1,8 +1,8 @@
 'use client';
-import LinkButton from "../common/uiLibrary/linkButton";
+import LinkButton from "../../atoms/LinkButton";
 import {useEffect, useState} from "react";
-import getDownloadLink from "../../utils/platform";
-import {GITHUB_RELEASES_URL} from "../../utils/urlContants";
+import getDownloadLink from "../../../utils/platform";
+import {GITHUB_RELEASES_URL} from "../../../utils/urlContants";
 import {BiSolidDownload} from "react-icons/bi";
 
 
