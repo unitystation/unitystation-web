@@ -1,16 +1,16 @@
 'use server'
 
-import {LoginResponse} from "./types";
-import {EncryptJWT, jwtDecrypt, jwtVerify, SignJWT} from "jose";
-import {isLoginResponse, parseError} from "./guards";
-import { cookies, type UnsafeUnwrappedCookies } from "next/headers";
-import {redirect} from "next/navigation";
+import { LoginResponse } from "./types";
+import { EncryptJWT, jwtDecrypt, jwtVerify, SignJWT } from "jose";
+import { isLoginResponse, parseError } from "./guards";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 const secretText = `${process.env.SECRET}`;
 const secretKey = Uint8Array.from(Buffer.from(secretText, 'base64'));
 
 export const tryGetSessionCookie = async (): Promise<{ success: boolean, value?: string }> => {
-    const cookiesManager = await  cookies();
+    const cookiesManager = await cookies();
     const sessionCookie = cookiesManager.get("session")?.value;
 
     if (sessionCookie) {
@@ -37,18 +37,15 @@ export const destroySessionCookie = async () => {
 }
 
 export const encryptSessionData = async (payload: LoginResponse) => {
-    console.log(secretText, secretText.length);
-    console.log(secretKey, secretKey.length);
-
     return await new EncryptJWT(payload as any)
-        .setProtectedHeader({alg: 'dir', enc: 'A256GCM'})
+        .setProtectedHeader({ alg: 'dir', enc: 'A256GCM' })
         .setIssuedAt()
         .setExpirationTime('1d')
         .encrypt(secretKey);
 }
 
 export const decryptSessionData = async (token: string) => {
-    const {payload} = await jwtDecrypt(token, secretKey);
+    const { payload } = await jwtDecrypt(token, secretKey);
 
     if (isLoginResponse(payload)) {
         return payload;
@@ -64,7 +61,7 @@ export const serverRequestLoginWithCredentials = async (email: string, password:
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({email, password})
+        body: JSON.stringify({ email, password })
     });
 
     const parsed = await evaluateResponse(response);
@@ -106,14 +103,14 @@ export const serverTrySessionLogin = async () => {
             return await serverRequestLoginWithToken(payload.token);
         }
 
-        return {IsLoggedIn: false, authContext: undefined, error: parseError(payload)};
+        return { IsLoggedIn: false, authContext: undefined, error: parseError(payload) };
     }
 
-    return {IsLoggedIn: false, authContext: undefined, error: undefined};
+    return { IsLoggedIn: false, authContext: undefined, error: undefined };
 }
 
 export const serverLogout = async () => {
-    destroySessionCookie();
+    await destroySessionCookie();
     redirect("login");
 }
 

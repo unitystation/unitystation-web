@@ -1,6 +1,9 @@
-/** @type {import('next').NextConfig} */
+import type { NextConfig } from 'next'
 
-module.exports = {
+const nextConfig: NextConfig = {
+    reactCompiler: {
+        compilationMode: 'annotation',
+    },
     images: {
         remotePatterns: [
             {
@@ -24,3 +27,5 @@ module.exports = {
         ],
     },
 }
+
+export default nextConfig;

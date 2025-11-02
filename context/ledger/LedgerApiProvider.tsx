@@ -1,7 +1,7 @@
 'use client';
 
 import React, {
-    createContext, useContext, useEffect, useState, ReactNode,
+    createContext, useContext, useEffect, useState, ReactNode, useRef,
 } from 'react';
 import { LedgerData, LedgerResponse } from '../../types/ledger/ledgerResponse';
 import fetchOfType from '../../utils/fetchOfType';
@@ -22,7 +22,7 @@ const BASE = "https://ledger.unitystation.org";
 export const LedgerApiProvider = ({ children }: { children: ReactNode }) => {
     const [fetchResult, setFetchResult] = useState<LedgerResponse | null>(null);
     const [pageUrl, setPageUrl] = useState<string>("");
-    const [isInitialLoad, setIsInitialLoad] = useState<boolean>(true);
+    const isInitialLoad = useRef(true);
     const [currentBalance, setCurrentBalance] = useState("0.00");
 
     const hasNextPage = !!fetchResult?.next;
@@ -38,7 +38,7 @@ export const LedgerApiProvider = ({ children }: { children: ReactNode }) => {
             setFetchResult(res);
             if (isInitialLoad) {
                 setCurrentBalance(res.results[0]?.balance_after || "0.00");
-                setIsInitialLoad(false);
+                isInitialLoad.current = true;
             }
         };
 
@@ -66,3 +66,4 @@ export const useLedgerApiProvider = (): LedgerApiResults => {
     if (!ctx) throw new Error('useLedger must be used within a LedgerProvider');
     return ctx;
 };
+

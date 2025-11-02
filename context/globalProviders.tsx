@@ -1,8 +1,8 @@
-import LayoutChildren from "../types/layoutChildren";
 import AuthorizerContextProvider from "./AuthorizerContextProvider";
+import {DivCommonProps} from "../types/ComponentProps";
 
 
-const Providers = (props: LayoutChildren) => {
+const GlobalProviders = (props: DivCommonProps) => {
 
     return (
         <AuthorizerContextProvider>
@@ -11,4 +11,4 @@ const Providers = (props: LayoutChildren) => {
     )
 }
 
-export default Providers;
+export default GlobalProviders;

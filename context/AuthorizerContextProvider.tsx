@@ -2,8 +2,8 @@
 
 import {createContext} from "react";
 import {AuthContext} from "../lib/auth/types";
-import LayoutChildren from "../types/layoutChildren";
 import {useAuth} from "../lib/auth/useAuth";
+import {DivCommonProps} from "../types/ComponentProps";
 
 export const AuthorizerContext = createContext<AuthContext>({
     state: {
@@ -15,7 +15,7 @@ export const AuthorizerContext = createContext<AuthContext>({
     logout: async () => {throw new Error("Logout was not served.")}
 })
 
-const AuthorizerContextProvider = (props: LayoutChildren) => {
+const AuthorizerContextProvider = (props: DivCommonProps) => {
     const context: AuthContext = useAuth();
 
     return (

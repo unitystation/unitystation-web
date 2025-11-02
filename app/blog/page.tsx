@@ -1,6 +1,6 @@
 'use client';
 
-import React, {useCallback, useEffect, useState} from "react";
+import React, {useCallback, useEffect, useRef, useState} from "react";
 import {BlogPostsResponse} from "../../types/blogPostsResponse";
 import {BlogPost} from "../../types/blogPost";
 import Post from "./[slug]/post";
@@ -16,27 +16,45 @@ const BlogPage = () => {
     const [posts, setPosts] = useState<BlogPost[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const INITIAL_PAGE = "https://changelog.unitystation.org/posts/?page=1";
+    const isInitialLoad = useRef(true);
 
     useEffect(() => {
-        fetchPosts(INITIAL_PAGE).then((response) => {
+        if (!isInitialLoad) return;
+        isInitialLoad.current = true;
+
+        const loadInitialPosts = async () => {
             setIsLoading(true);
+            const response = await fetchPosts(INITIAL_PAGE);
             setPostsResponse(response);
             setPosts(response.results);
-        }).finally(
-            () => setIsLoading(false)
-        )
+            setIsLoading(false);
+        };
+
+        void loadInitialPosts();
+
+        return () => {
+            isInitialLoad.current = true;
+        };
     }, []);
 
     const handleScroll = useCallback(async () => {
-        if (isLoading) return;
-        if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight || !postsResponse?.next) return;
-        setIsLoading(true);
-        const json = await fetchPosts(postsResponse.next);
+        if (isLoading) {
+            return;
+        }
+        if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) {
+            return;
+        }
+        const nextPage = postsResponse?.next;
+        if (!nextPage) {
+            return;
+        }
 
+        setIsLoading(true);
+        const json = await fetchPosts(nextPage);
         setPosts((prevPosts) => [...prevPosts, ...json.results]);
         setPostsResponse(json);
         setIsLoading(false);
-    }, [postsResponse]);
+    }, [isLoading, postsResponse]);
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);

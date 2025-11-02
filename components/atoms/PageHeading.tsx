@@ -1,7 +1,7 @@
 import classNames from "classnames";
-import LayoutChildren from "../../types/layoutChildren";
+import {DivCommonProps} from "../../types/ComponentProps";
 
-interface PageHeadingProps extends LayoutChildren{
+interface PageHeadingProps extends DivCommonProps{
     isCentered?: boolean;
     isLink?: boolean;
 }

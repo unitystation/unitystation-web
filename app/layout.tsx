@@ -5,7 +5,7 @@ import {Metadata} from "next";
 import DefaultNavbar from "../components/organisms/navigation/DefaultNavbar";
 import {Analytics} from '@vercel/analytics/react';
 import type {Viewport} from 'next'
-import Providers from "../context/providers";
+import GlobalProviders from "../context/globalProviders";
 
 export const metadata: Metadata = {
     title: 'Unitystation - The Space Station 13 Remake Made in Unity',
@@ -50,10 +50,10 @@ export default function RootLayout({children,}: { children: React.ReactNode; }) 
         <html>
         <body className="dark">
         <Clown/>
-        <Providers >
+        <GlobalProviders>
             <DefaultNavbar/>
             {children}
-        </Providers>
+        </GlobalProviders>
         <Analytics/>
         </body>
         </html>

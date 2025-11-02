@@ -1,6 +1,7 @@
-import LayoutChildren from "../../../types/layoutChildren";
+import {DivCommonProps} from "../../../types/ComponentProps";
 
-export default function Container(props: LayoutChildren) {
+
+export default function Container(props: DivCommonProps) {
     const { children } = props;
 
     return (

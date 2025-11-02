@@ -1,11 +1,11 @@
-import layoutChildren from "../../../types/layoutChildren";
 import Container from "../../molecules/layout/Container";
 import TopMiddlePlacer from "./TopMiddlePlacer";
 import Panel from "../../molecules/layout/Panel";
 import React from "react";
 import classNames from "classnames";
+import {FormCommonProps} from "../../../types/ComponentProps";
 
-interface FormContainerProps extends layoutChildren, React.FormHTMLAttributes<HTMLFormElement>{
+interface FormContainerProps extends FormCommonProps{
     title: string;
 }
 

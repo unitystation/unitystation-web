@@ -1,7 +1,7 @@
 'use client';
 
-import layoutChildren from "../../../types/layoutChildren";
 import {useEffect, useState} from "react";
+import {DivCommonProps} from "../../../types/ComponentProps";
 
 const images: string[] = [
     "https://unitystationfile.b-cdn.net/Website-Statics/heroImages/bar-engine.png",
@@ -23,7 +23,7 @@ const getNextImage = () => {
     return images[currentIndex];
 };
 
-const HomeBannerClient = (props: layoutChildren) => {
+const HomeBannerClient = (props: DivCommonProps) => {
     const {children} = props;
 
     const [image1, setImage1] = useState<string>(getNextImage());

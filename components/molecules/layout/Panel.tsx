@@ -1,7 +1,7 @@
 import classNames from "classnames";
-import LayoutChildren from "../../../types/layoutChildren";
+import {DivCommonProps} from "../../../types/ComponentProps";
 
-interface PanelProps extends LayoutChildren {
+interface PanelProps extends DivCommonProps {
     solid?: boolean;
 }
 
