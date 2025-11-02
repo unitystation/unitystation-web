@@ -19,6 +19,9 @@ export default function DefaultNavbar() {
             {/* hidden while we work on it */}
             {/*<Dropdown.Item>My Account</Dropdown.Item>*/}
             <Dropdown.Item>
+                <Link href='/my-servers'>My servers</Link>
+            </Dropdown.Item>
+            <Dropdown.Item>
                 <Link href='/logout'>Logout</Link>
             </Dropdown.Item>
         </>
