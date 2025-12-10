@@ -1,3 +1,18 @@
+# [1.13.0](https://github.com/unitystation/unitystation-web/compare/v1.12.0...v1.13.0) (2025-12-10)
+
+
+### Bug Fixes
+
+* update all deps ([f307964](https://github.com/unitystation/unitystation-web/commit/f307964ce27f43656b783ece0db9e1d4f967eab0))
+* updated vulnerable deps ([5826ba7](https://github.com/unitystation/unitystation-web/commit/5826ba71cfb41b1b5023b46f971b797119de6877))
+
+
+### Features
+
+* changes "Weekly Update" pill's text to "Progress update" ([6845ea6](https://github.com/unitystation/unitystation-web/commit/6845ea6b17fe2701e8fbdc4cecf64d1a1319ec97))
+* first iteration of the new ledger page ([1cae21d](https://github.com/unitystation/unitystation-web/commit/1cae21d0368529be3fba38b3e8990ff6c61639a4))
+* first iteration of the new ledger page ([cd5c42f](https://github.com/unitystation/unitystation-web/commit/cd5c42f3b569956608fcc80886f1b962d1ed1319))
+
 # [1.13.0](https://github.com/unitystation/unitystation-web/compare/v1.12.0...v1.13.0) (2025-04-21)
 
 
