@@ -89,7 +89,7 @@ const DownloadBuildDropdown = (props: { version: string }) => {
                     {platforms.map((platform) => (
                         <a
                             key={platform}
-                            href={`https://unitystationfile.b-cdn.net/UnityStationDevelop/${platform}/${props.version}.zip`}
+                            href={`https://cdn.unitystation.org/UnityStationDevelop/${platform}/${props.version}.zip`}
                             className="block px-4 py-2 text-sm text-blue-50 hover:bg-gray-100 hover:text-gray-900"
                             role="menuitem"
                             onClick={handleClick}

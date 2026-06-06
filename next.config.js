@@ -5,7 +5,7 @@ module.exports = {
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: 'unitystationfile.b-cdn.net',
+                hostname: 'cdn.unitystation.org',
                 port: '',
                 pathname: '/**/**',
             },
