@@ -32,7 +32,7 @@ export const metadata: Metadata = {
         description: 'Unitystation is a free and open-source chaotic multiplayer role-playing and simulation game made in Unity. Remake of the cult classic Space Station 13.',
         images: [
             {
-                url: 'https://unitystationfile.b-cdn.net/Branding/US13_OG_image_preview_1.png',
+                url: 'https://cdn.unitystation.org/Branding/US13_OG_image_preview_1.png',
             },
         ]
     }
