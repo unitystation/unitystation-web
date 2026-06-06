@@ -4,16 +4,16 @@ import layoutChildren from "../../types/layoutChildren";
 import {useEffect, useState} from "react";
 
 const images: string[] = [
-    "https://unitystationfile.b-cdn.net/Website-Statics/heroImages/bar-engine.png",
-    "https://unitystationfile.b-cdn.net/Website-Statics/heroImages/clowns.png",
-    "https://unitystationfile.b-cdn.net/Website-Statics/heroImages/conveyor.jpg",
-    "https://unitystationfile.b-cdn.net/Website-Statics/heroImages/df.jpg",
-    "https://unitystationfile.b-cdn.net/Website-Statics/heroImages/go-outsid.png",
-    "https://unitystationfile.b-cdn.net/Website-Statics/heroImages/honk.jpg",
-    "https://unitystationfile.b-cdn.net/Website-Statics/heroImages/hugger.png",
-    "https://unitystationfile.b-cdn.net/Website-Statics/heroImages/lemons.png",
-    "https://unitystationfile.b-cdn.net/Website-Statics/heroImages/shuttlecrash.png",
-    "https://unitystationfile.b-cdn.net/Website-Statics/heroImages/chairs.jpg",
+    "https://cdn.unitystation.org/Website-Statics/heroImages/bar-engine.png",
+    "https://cdn.unitystation.org/Website-Statics/heroImages/clowns.png",
+    "https://cdn.unitystation.org/Website-Statics/heroImages/conveyor.jpg",
+    "https://cdn.unitystation.org/Website-Statics/heroImages/df.jpg",
+    "https://cdn.unitystation.org/Website-Statics/heroImages/go-outsid.png",
+    "https://cdn.unitystation.org/Website-Statics/heroImages/honk.jpg",
+    "https://cdn.unitystation.org/Website-Statics/heroImages/hugger.png",
+    "https://cdn.unitystation.org/Website-Statics/heroImages/lemons.png",
+    "https://cdn.unitystation.org/Website-Statics/heroImages/shuttlecrash.png",
+    "https://cdn.unitystation.org/Website-Statics/heroImages/chairs.jpg",
 ];
 
 let currentIndex = 0;
