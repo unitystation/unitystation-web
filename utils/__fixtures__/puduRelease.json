@@ -1,0 +1,15 @@
+{
+  "tag_name": "v2.0.0",
+  "html_url": "https://github.com/unitystation/PuduLauncher/releases/tag/v2.0.0",
+  "assets": [
+    { "name": "darwin-pudu-launcher2.0.0-aarch64.app.tar.gz", "size": 11000000, "browser_download_url": "https://github.com/unitystation/PuduLauncher/releases/download/v2.0.0/darwin-pudu-launcher2.0.0-aarch64.app.tar.gz" },
+    { "name": "darwin-pudu-launcher2.0.0-aarch64.dmg", "size": 12582912, "browser_download_url": "https://github.com/unitystation/PuduLauncher/releases/download/v2.0.0/darwin-pudu-launcher2.0.0-aarch64.dmg" },
+    { "name": "latest.json", "size": 1200, "browser_download_url": "https://github.com/unitystation/PuduLauncher/releases/download/v2.0.0/latest.json" },
+    { "name": "linux-pudu-launcher2.0.0-amd64.deb", "size": 15728640, "browser_download_url": "https://github.com/unitystation/PuduLauncher/releases/download/v2.0.0/linux-pudu-launcher2.0.0-amd64.deb" },
+    { "name": "linux-pudu-launcher2.0.0-amd64.deb.sig", "size": 600, "browser_download_url": "https://github.com/unitystation/PuduLauncher/releases/download/v2.0.0/linux-pudu-launcher2.0.0-amd64.deb.sig" },
+    { "name": "linux-pudu-launcher2.0.0-x86_64.rpm", "size": 16777216, "browser_download_url": "https://github.com/unitystation/PuduLauncher/releases/download/v2.0.0/linux-pudu-launcher2.0.0-x86_64.rpm" },
+    { "name": "Windows-pudu-launcher-portable-x64.zip", "size": 20971520, "browser_download_url": "https://github.com/unitystation/PuduLauncher/releases/download/v2.0.0/Windows-pudu-launcher-portable-x64.zip" },
+    { "name": "windows-pudu-launcher-setup2.0.0-x64.exe", "size": 18874368, "browser_download_url": "https://github.com/unitystation/PuduLauncher/releases/download/v2.0.0/windows-pudu-launcher-setup2.0.0-x64.exe" },
+    { "name": "windows-pudu-launcher-setup2.0.0-x64.exe.sig", "size": 600, "browser_download_url": "https://github.com/unitystation/PuduLauncher/releases/download/v2.0.0/windows-pudu-launcher-setup2.0.0-x64.exe.sig" }
+  ]
+}
