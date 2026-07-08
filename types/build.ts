@@ -1,9 +1,9 @@
-import Change from './change';
+import Change from "./change";
 
 interface Build {
-    version_number: string,
-    date_created: string,
-    changes: Change[],
+    version_number: string;
+    date_created: string;
+    changes: Change[];
 }
 
 export default Build;

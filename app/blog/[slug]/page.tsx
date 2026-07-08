@@ -1,50 +1,42 @@
-import {BlogPost} from "../../../types/blogPost";
+import { Metadata } from "next";
+import Container from "../../../components/ui/Container";
+import { BlogPost } from "../../../types/blogPost";
+import { PageParams } from "../../../types/pageParams";
 import FetchOfType from "../../../utils/fetchOfType";
-import React from "react";
-import Post from "./post";
-import {PageParams} from "../../../types/pageParams";
-import {Metadata} from "next";
+import "../ck-content.css";
+import PostArticle from "../../../components/blog/PostArticle";
 
 const fetchPost = async (slug: string): Promise<BlogPost> => {
-    return await FetchOfType<BlogPost>(`https://changelog.unitystation.org/posts/${slug}`);
-}
+    return FetchOfType<BlogPost>(`https://changelog.unitystation.org/posts/${slug}`, {
+        next: { revalidate: 60 },
+    });
+};
 
-export const metadata: Metadata = {
+export async function generateMetadata(query: PageParams): Promise<Metadata> {
+    const { slug } = await query.params;
+    const post = await fetchPost(slug);
 
-}
-
-const setMetadata = (post: BlogPost) => {
-    metadata.title = `Unitystation - ${post.title}`;
-    metadata.description = post.summary;
-    metadata.openGraph = {
-        type: 'website',
-        locale: 'en_US',
-        url: `https://unitystation.org/blog/${post.slug}`,
+    return {
         title: `Unitystation - ${post.title}`,
         description: post.summary,
-        images: [
-            {
-                url: post.socials_image
-            }
-            ]
-    }
+        openGraph: {
+            type: "website",
+            locale: "en_US",
+            url: `https://unitystation.org/blog/${post.slug}`,
+            title: `Unitystation - ${post.title}`,
+            description: post.summary,
+            images: [{ url: post.socials_image }],
+        },
+    };
 }
 
-const PostPage = async (query: PageParams) => {
-
-    const {slug} = await query.params;
-    const post: BlogPost = await fetchPost(slug as string);
-    setMetadata(post);
+export default async function PostPage(query: PageParams) {
+    const { slug } = await query.params;
+    const post = await fetchPost(slug);
 
     return (
-        <>
-            <main className={'pt-8 pb-16 lg:pt-16 lg:pb-24'}>
-                <div className={'flex px-4 mx-auto max-w-screen-xl '}>
-                    {<Post post={post}/>}
-                </div>
-            </main>
-        </>
-    )
+        <Container className="py-10 lg:py-16">
+            <PostArticle post={post} />
+        </Container>
+    );
 }
-
-export default PostPage;

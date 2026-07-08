@@ -1,17 +1,28 @@
-"use client"
+"use client";
 
-import {useContext, useEffect} from "react";
-import {redirect} from "next/navigation";
-import {AuthorizerContext} from "../../../context/AuthorizerContextProvider";
+import { useRouter } from "next/navigation";
+import { useContext, useEffect } from "react";
+import LoadingPanel from "../../../components/ui/LoadingPanel";
+import Container from "../../../components/ui/Container";
+import { AuthorizerContext } from "../../../context/AuthorizerContextProvider";
 
-const LogoutPage = () => {
+export default function LogoutPage() {
     const authState = useContext(AuthorizerContext);
+    const router = useRouter();
 
     useEffect(() => {
         authState.logout().then(() => {
-            redirect("login");
+            router.replace("/login");
         });
-    }, [authState]);
-}
+        // Log out exactly once on mount. `authState` gets a fresh identity on every
+        // render (useAuth returns a new object each time), so depending on it here
+        // would re-run this effect after logout's setState and loop infinitely.
+        // oxlint-disable-next-line react/exhaustive-deps
+    }, []);
 
-export default LogoutPage;
+    return (
+        <Container width="narrow" className="py-16">
+            <LoadingPanel label="Signing off" />
+        </Container>
+    );
+}
