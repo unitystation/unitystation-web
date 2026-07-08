@@ -1,4 +1,4 @@
-import {FieldError, GeneralError} from "./guards";
+import { FieldError, GeneralError } from "./guards";
 
 export interface AccountPublicData {
     unique_identifier: string;

@@ -1,6 +1,6 @@
 export interface LedgerData {
     id: number;
-    type: 'expense' | 'income';
+    type: "expense" | "income";
     description: string;
     notes: string | null;
     amount_usd: string;

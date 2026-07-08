@@ -1,95 +1,92 @@
-'use client';
+"use client";
 
-import {createContext, ReactNode, useContext} from "react";
-import {DataTableProps} from "../../components/organisms/DataTable";
-import {LedgerData} from "../../types/ledger/ledgerResponse";
-import {useLedgerApiProvider} from "./LedgerApiProvider";
-import {GoInfo, GoLinkExternal} from "react-icons/go";
-
+import { createContext, ReactNode, useContext } from "react";
+import { GoInfo } from "react-icons/go";
+import { DataTableProps } from "../../components/ui/DataTable";
+import TextLink from "../../components/ui/TextLink";
+import { LedgerData } from "../../types/ledger/ledgerResponse";
+import { useLedgerApiProvider } from "./LedgerApiProvider";
 
 const LedgerTableContext = createContext<DataTableProps<LedgerData> | undefined>(undefined);
 
 export const LedgerTableProvider = ({ children }: { children: ReactNode }) => {
-    const {results} = useLedgerApiProvider();
+    const { results } = useLedgerApiProvider();
 
     const processDate = (date: string): ReactNode => {
-        return Intl.DateTimeFormat('en-GB', {
-            day: '2-digit',
-            month: 'long',
-            year: 'numeric',
+        return Intl.DateTimeFormat("en-GB", {
+            day: "2-digit",
+            month: "long",
+            year: "numeric",
         }).format(new Date(date));
-    }
+    };
 
     const processDescription = (description: string, notes: string): ReactNode => {
         return (
-            <div className="flex gap-2">
-                <span>
-                    {description}
-                </span>
-                {notes && (
-                    <GoInfo title={notes} />
-                )}
+            <div className="flex items-center gap-2">
+                <span>{description}</span>
+                {notes && <GoInfo title={notes} className="shrink-0 text-faint" />}
             </div>
-
         );
-    }
+    };
 
-    const processAmount = (amount: string, type: 'income' | 'expense'): ReactNode => {
-        const usd = new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'USD',
+    const processAmount = (amount: string, type: "income" | "expense"): ReactNode => {
+        const usd = new Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: "USD",
             minimumFractionDigits: 2,
             maximumFractionDigits: 2,
         });
 
-        const numeric = Number.parseFloat(amount);
-        const formatted = usd.format(numeric);
-
-        const colour = type === 'income' ? 'text-green-500' : 'text-red-500';
-        return <span className={colour}>{formatted}</span>;
-    }
+        const formatted = usd.format(Number.parseFloat(amount));
+        const colour = type === "income" ? "text-success" : "text-danger";
+        return (
+            <span className={`font-mono ${colour}`}>
+                {type === "income" ? "+" : "−"}
+                {formatted}
+            </span>
+        );
+    };
 
     const processLink = (link: string): ReactNode => {
-        if (link) {
-            return <a href={link}><GoLinkExternal /></a>
-        } else {
-            return <></>
-        }
-    }
+        if (!link) return null;
+        return (
+            <TextLink href={link} external className="text-xs">
+                View
+            </TextLink>
+        );
+    };
 
     const data: DataTableProps<LedgerData> = {
         columns: [
             {
                 header: "Date",
-                cell: row => processDate(row.created_at)
+                cell: (row) => processDate(row.created_at),
             },
             {
                 header: "Description",
-                cell: row => processDescription(row.description, row.notes || "")
+                cell: (row) => processDescription(row.description, row.notes || ""),
             },
             {
                 header: "Amount (USD)",
-                cell: row => processAmount(row.amount_usd, row.type)
+                cell: (row) => processAmount(row.amount_usd, row.type),
+                align: "right",
             },
             {
                 header: "Link",
-                cell: row => processLink(row.link || "")
-            }
+                cell: (row) => processLink(row.link || ""),
+                align: "right",
+            },
         ],
-        data: results
+        data: results,
     };
 
-    return (
-        <LedgerTableContext.Provider value={data}>
-            {children}
-        </LedgerTableContext.Provider>
-    );
-}
+    return <LedgerTableContext.Provider value={data}>{children}</LedgerTableContext.Provider>;
+};
 
 export const useLedgerTableContext = () => {
     const context = useContext(LedgerTableContext);
     if (!context) {
-        throw new Error('useLedgerTableContext must be used within a LedgerTableProvider');
+        throw new Error("useLedgerTableContext must be used within a LedgerTableProvider");
     }
     return context;
-}
+};

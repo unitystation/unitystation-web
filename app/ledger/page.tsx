@@ -1,6 +1,6 @@
-import {LedgerApiProvider} from "../../context/ledger/LedgerApiProvider";
-import LedgerPresentation from "./presentation";
-import {LedgerTableProvider} from "../../context/ledger/LedgerDataTableProvider";
+import { LedgerApiProvider } from "../../context/ledger/LedgerApiProvider";
+import { LedgerTableProvider } from "../../context/ledger/LedgerDataTableProvider";
+import LedgerPresentation from "../../components/ledger/LedgerPresentation";
 
 const LedgerPage = () => {
     return (
@@ -9,7 +9,7 @@ const LedgerPage = () => {
                 <LedgerPresentation />
             </LedgerTableProvider>
         </LedgerApiProvider>
-    )
-}
+    );
+};
 
 export default LedgerPage;

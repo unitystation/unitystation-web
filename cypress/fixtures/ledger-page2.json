@@ -1,0 +1,27 @@
+{
+    "count": 4,
+    "next": null,
+    "previous": "https://ledger.unitystation.org/movements/",
+    "results": [
+        {
+            "id": 2,
+            "type": "income",
+            "description": "PayPal donation",
+            "notes": null,
+            "amount_usd": "25.00",
+            "created_at": "2026-05-20T12:00:00Z",
+            "balance_after": "854.56",
+            "link": null
+        },
+        {
+            "id": 1,
+            "type": "expense",
+            "description": "Domain renewal",
+            "notes": "unitystation.org",
+            "amount_usd": "15.00",
+            "created_at": "2026-05-05T12:00:00Z",
+            "balance_after": "829.56",
+            "link": "https://example.com/receipt/1"
+        }
+    ]
+}

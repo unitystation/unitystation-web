@@ -1,0 +1,17 @@
+{
+    "$schema": "./node_modules/oxlint/configuration_schema.json",
+    "plugins": ["typescript", "unicorn", "oxc", "react", "nextjs", "jsx-a11y"],
+    "categories": {
+        "correctness": "error"
+    },
+    "rules": {
+        "react/rules-of-hooks": "error",
+        "react/react-compiler": "error",
+        // Suggests <output>/<fieldset> for role="status"/"group" live regions and
+        // toolbars where a div with an explicit role is the better fit.
+        "jsx-a11y/prefer-tag-over-role": "off"
+    },
+    "env": {
+        "builtin": true
+    }
+}
