@@ -1,37 +1,32 @@
 /// <reference types="cypress" />
-// ***********************************************
-// This example commands.ts shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-//
-// declare global {
-//   namespace Cypress {
-//     interface Chainable {
-//       login(email: string, password: string): Chainable<void>
-//       drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
-//     }
-//   }
-// }
+
+declare global {
+    namespace Cypress {
+        interface Chainable {
+            /**
+             * Click the first element matching `selector`, retrying until
+             * `expectSelector` appears in the DOM. Next.js pages hydrate after
+             * first paint, so an immediate click can land before React has
+             * attached event handlers and silently do nothing.
+             */
+            hydratedClick(selector: string, expectSelector: string): void;
+        }
+    }
+}
+
+const hydratedClick = (selector: string, expectSelector: string, attempts = 5) => {
+    cy.get(selector).first().click();
+    cy.get("body").then(($body) => {
+        if ($body.find(expectSelector).length === 0 && attempts > 0) {
+            cy.wait(200);
+            hydratedClick(selector, expectSelector, attempts - 1);
+        }
+    });
+    cy.get(expectSelector).should("exist");
+};
+
+Cypress.Commands.add("hydratedClick", (selector: string, expectSelector: string) =>
+    hydratedClick(selector, expectSelector),
+);
+
+export {};

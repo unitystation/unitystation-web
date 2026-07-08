@@ -1,0 +1,18 @@
+{
+    "count": 4,
+    "next": null,
+    "previous": "https://changelog.unitystation.org/posts/?page=1",
+    "results": [
+        {
+            "title": "Archived post from page two",
+            "slug": "archived-post-page-two",
+            "author": "OldTimer",
+            "date_created": "2026-05-01T12:00:00Z",
+            "type": "announcement",
+            "state": "published",
+            "socials_image": "/favicon.ico",
+            "summary": "An older announcement that lives on the second page.",
+            "sections": [{ "body": "Old news." }]
+        }
+    ]
+}

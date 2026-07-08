@@ -1,7 +1,7 @@
-'use server'
+"use server";
 
-import {revalidatePath} from "next/cache";
-import {z} from "zod";
+import { revalidatePath } from "next/cache";
+import { z } from "zod";
 
 export interface ResetPassowrdStep1 {
     success: boolean;
@@ -10,17 +10,23 @@ export interface ResetPassowrdStep1 {
     fieldErrors?: { [key: string]: string };
 }
 
-export const requestAPasswordReset = async (_: ResetPassowrdStep1, formData : FormData): Promise<ResetPassowrdStep1> => {
+export const requestAPasswordReset = async (
+    _: ResetPassowrdStep1,
+    formData: FormData,
+): Promise<ResetPassowrdStep1> => {
     const schema = z.object({
         email: z.string().email(),
     });
 
-    const parsed = schema.safeParse(
-        { email: formData.get('email')}
-    );
+    const parsed = schema.safeParse({ email: formData.get("email") });
 
     if (!parsed.success) {
-        return { success: false, email: '', message: '', fieldErrors: { email: 'Invalid email address'}};
+        return {
+            success: false,
+            email: "",
+            message: "",
+            fieldErrors: { email: "Invalid email address" },
+        };
     }
 
     const email = parsed.data.email;
@@ -35,13 +41,13 @@ export const requestAPasswordReset = async (_: ResetPassowrdStep1, formData : Fo
         });
 
         if (!response.ok) {
-            return { success: false, email: email, message: 'An unexpected error occurred'};
+            return { success: false, email: email, message: "An unexpected error occurred" };
         }
 
-        revalidatePath('reset-password');
+        revalidatePath("reset-password");
 
-        return { success: true};
-    } catch (error) {
-        return { success: false, email: email, message: 'An unexpected error occurred'};
+        return { success: true };
+    } catch {
+        return { success: false, email: email, message: "An unexpected error occurred" };
     }
 };

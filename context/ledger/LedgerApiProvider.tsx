@@ -1,10 +1,8 @@
-'use client';
+"use client";
 
-import React, {
-    createContext, useContext, useEffect, useState, ReactNode,
-} from 'react';
-import { LedgerData, LedgerResponse } from '../../types/ledger/ledgerResponse';
-import fetchOfType from '../../utils/fetchOfType';
+import { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import { LedgerData, LedgerResponse } from "../../types/ledger/ledgerResponse";
+import fetchOfType from "../../utils/fetchOfType";
 
 export interface LedgerApiResults {
     goToNextPage: () => void;
@@ -13,6 +11,8 @@ export interface LedgerApiResults {
     hasPreviousPage: boolean;
     results: LedgerData[];
     currentBalance: string;
+    /** True until the first page has arrived; drives the loading skeletons. */
+    isLoading: boolean;
 }
 
 const LedgerApiContext = createContext<LedgerApiResults | undefined>(undefined);
@@ -43,6 +43,8 @@ export const LedgerApiProvider = ({ children }: { children: ReactNode }) => {
         };
 
         void fetchData();
+        // isInitialLoad is intentionally read once; adding it would re-fetch on every load toggle.
+        // oxlint-disable-next-line react/exhaustive-deps
     }, [pageUrl]);
 
     return (
@@ -54,6 +56,7 @@ export const LedgerApiProvider = ({ children }: { children: ReactNode }) => {
                 hasPreviousPage,
                 results: fetchResult?.results ?? [],
                 currentBalance,
+                isLoading: isInitialLoad,
             }}
         >
             {children}
@@ -63,6 +66,6 @@ export const LedgerApiProvider = ({ children }: { children: ReactNode }) => {
 
 export const useLedgerApiProvider = (): LedgerApiResults => {
     const ctx = useContext(LedgerApiContext);
-    if (!ctx) throw new Error('useLedger must be used within a LedgerProvider');
+    if (!ctx) throw new Error("useLedger must be used within a LedgerProvider");
     return ctx;
 };

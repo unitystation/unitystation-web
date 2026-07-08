@@ -2,16 +2,107 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
-    padding: 0;
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    color: white;
+/*
+ * ── Unitystation design tokens ─────────────────────────────────────────
+ * The StationHub / PuduLauncher palette: teal accent #0078a3, steel-blue
+ * surfaces #132736 → #21435C → #38729C, deep navy #05131e behind it all.
+ * Raw RGB triplets so Tailwind can compose alpha.
+ *
+ *   surfaces: void → hull → panel → raised
+ *   lines:    seam / seam-bright
+ *   text:     crew / dim / faint
+ *   accents:  primary / info / success / warning / danger
+ */
+:root {
+    /* surfaces: dark desaturated slate, like the PuduLauncher window */
+    --c-void: 5 19 30;
+    /* #05131e, space behind everything */
+    --c-hull: 10 15 21;
+    /* #0a0f15, navbar, footer, inputs, wells */
+    --c-panel: 21 28 38;
+    /* #151c26, panels, cards */
+    --c-raised: 28 37 48;
+    /* #1c2530, title bars, table headers, hovers */
+
+    /* lines & interactive chrome */
+    --c-seam: 36 46 59;
+    /* #242e3b, borders */
+    --c-seam-bright: 56 114 156;
+    /* #38729c, highlighted edges, scrollbars */
+    --c-steel: 33 67 92;
+    /* #21435c, chips, selected states, secondary buttons */
+
+    /* text */
+    --c-crew: 252 252 253;
+    /* #fcfcfd */
+    --c-dim: 197 208 220;
+    /* #c5d0dc */
+    --c-faint: 112 137 162;
+    /* #7089a2 */
+
+    /* accents */
+    --c-primary: 0 120 163;
+    /* #0078a3, filled actions */
+    --c-primary-hot: 0 102 139;
+    /* #00668b, filled action hover */
+    --c-accent: 79 161 219;
+    /* #4fa1db, links, focus, highlights */
+    --c-info: 77 189 231;
+    /* #4dbde7 */
+    --c-success: 62 174 108;
+    /* #3eae6c */
+    --c-warning: 232 168 28;
+    /* #e8a81c */
+    --c-danger: 212 102 102;
+    /* #d66, readable on dark */
+    --c-danger-fill: 170 68 68;
+    /* #aa4444, filled destructive actions */
+}
+
+html {
+    background-color: rgb(var(--c-void));
+    color-scheme: dark;
 }
 
 body {
-    background-image: url("https://cdn.unitystation.org/Website-Statics/layer1.png");
+    margin: 0;
+    padding: 0;
+    /* the clown roams past the right edge; never let it widen the page */
+    overflow-x: clip;
+    color: rgb(var(--c-crew));
+    font-family: var(--font-body), system-ui, sans-serif;
+    /* No background here: an opaque body background would paint over the
+       fixed -z-10 parallax layers. The html element carries the base colour. */
+}
+
+* {
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #38729c #0a0f15;
+}
+
+*::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #0a0f15;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #38729c;
+    border: 2px solid #0a0f15;
+    border-radius: 8px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background-color: #4fa1db;
+}
+
+::selection {
+    background: rgb(var(--c-accent));
+    color: rgb(var(--c-void));
 }
 
 a {
@@ -19,49 +110,81 @@ a {
     text-decoration: none;
 }
 
-* {
-    box-sizing: border-box;
-}
-
-.inset-shadow::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    box-shadow: var(--tw-shadow);
-    pointer-events: none;
-}
-
-.dot {
-    width: 40px;
-    height: 40px;
-    background-color: whitesmoke;
-    border-radius: 50%;
-    margin: 0 10px;
-    animation: dotAnimation 1.5s infinite cubic-bezier(0.68, -0.55, 0.27, 1.55);
-}
-
-@keyframes dotAnimation {
-    0%, 100% {
-        transform: translateY(0);
-        opacity: 0.2;
+/* Slow sideways drift of the space layers, like the game's main menu.
+   Composited (transform only); one loop shifts exactly one tile. */
+@keyframes space-drift {
+    from {
+        transform: translateX(0);
     }
+
+    to {
+        transform: translateX(calc(var(--tile) * -1px));
+    }
+}
+
+.space-drift {
+    animation: space-drift var(--drift-duration, 180s) linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .space-drift {
+        animation: none;
+    }
+}
+
+/* Minecraft-style splash text: diagonal, pulsing over the title. */
+@keyframes splash-pulse {
+    0%,
+    100% {
+        transform: rotate(-12deg) scale(1);
+    }
+
     50% {
-        transform: translateY(-20px);
-        opacity: 1;
+        transform: rotate(-12deg) scale(1.08);
     }
 }
 
-.dot:nth-child(1) {
-    animation-delay: 0s;
+.splash-text {
+    animation: splash-pulse 1s ease-in-out infinite;
 }
 
-.dot:nth-child(2) {
-    animation-delay: 0.5s;
+@media (prefers-reduced-motion: reduce) {
+    .splash-text {
+        animation: none;
+        transform: rotate(-12deg);
+    }
 }
 
-.dot:nth-child(3) {
-    animation-delay: 1s;
+@layer utilities {
+    /* Subtle scanlines overlay for in-game imagery. */
+    .scanlines {
+        background-image: repeating-linear-gradient(
+            0deg,
+            rgb(0 0 0 / 0.18) 0 1px,
+            transparent 1px 3px
+        );
+    }
+
+    /* Uppercase monospace microcopy: small labels, table headers, metadata. */
+    .type-label {
+        font-family: var(--font-mono), ui-monospace, monospace;
+        font-size: 0.6875rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+    }
+
+    /* Dark halo behind text that sits directly over the starfield (outside
+       panels), so it stays legible against the stars. Sized to the type it
+       backs: lg for headings, md for ledes, sm for labels. */
+    .text-halo-lg {
+        text-shadow: 0 2px 24px rgb(var(--c-void) / 0.9);
+    }
+
+    .text-halo-md {
+        text-shadow: 0 1px 12px rgb(var(--c-void) / 0.9);
+    }
+
+    .text-halo-sm {
+        text-shadow: 0 1px 8px rgb(var(--c-void) / 0.9);
+    }
 }

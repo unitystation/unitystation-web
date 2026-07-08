@@ -1,0 +1,40 @@
+{
+    "count": 4,
+    "next": "https://changelog.unitystation.org/posts/?page=2",
+    "previous": null,
+    "results": [
+        {
+            "title": "Station reactor now explodes properly",
+            "slug": "reactor-explodes-properly",
+            "author": "TestAuthor",
+            "date_created": "2026-06-30T12:00:00Z",
+            "type": "announcement",
+            "state": "published",
+            "socials_image": "/favicon.ico",
+            "summary": "The reactor finally detonates with the dignity it deserves.",
+            "sections": [{ "heading": "Boom", "body": "It explodes now." }]
+        },
+        {
+            "title": "Weekly progress report 42",
+            "slug": "weekly-progress-42",
+            "author": "DevCrew",
+            "date_created": "2026-06-25T12:00:00Z",
+            "type": "weekly",
+            "state": "published",
+            "socials_image": "/favicon.ico",
+            "summary": "Atmospherics got faster and the clown got slower.",
+            "sections": [{ "body": "Lots of work this week." }]
+        },
+        {
+            "title": "Community spotlight: chef mains",
+            "slug": "community-chef-mains",
+            "author": "CommunityTeam",
+            "date_created": "2026-06-20T12:00:00Z",
+            "type": "community",
+            "state": "published",
+            "socials_image": "/favicon.ico",
+            "summary": "Celebrating the people who keep the crew fed.",
+            "sections": [{ "body": "Great cooks all around." }]
+        }
+    ]
+}

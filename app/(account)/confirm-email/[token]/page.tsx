@@ -1,49 +1,47 @@
-"use client"
-import {useParams} from "next/navigation";
-import {postMailConfirmationToken} from "./actions";
-import React, {useEffect, useState} from "react";
-import Panel from "../../../common/uiLibrary/panel";
-import ContactInformation from "../../../(home)/contactInformation";
+"use client";
 
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import FormShell, { FormFooterLinks } from "../../../../components/ui/FormShell";
+import Spinner from "../../../../components/ui/Spinner";
+import Notice from "../../../../components/ui/Notice";
+import { postMailConfirmationToken } from "./actions";
 
-const MailConfirmationPage = () => {
+export default function MailConfirmationPage() {
     const [response, setResponse] = useState<{ success?: boolean; error?: string }>({});
-    const {token} = useParams<{token: string}>();
+    const params = useParams<{ token: string }>();
+    const token = params?.token;
 
     useEffect(() => {
-        const fetchData = async () => {
-            if (token) {
-                return await postMailConfirmationToken(token);
-            }
-        };
-
-        fetchData().then(r => {
-            setResponse(r);
-        });
+        if (!token) return;
+        postMailConfirmationToken(token).then((r) => setResponse(r));
     }, [token]);
 
-    if (!token) {
-        return <main>
-        </main>;
-    }
+    if (!token) return null;
 
     return (
-        <main className="flex flex-col justify-between min-h-screen pt-8 pb-16 lg:pt-16 lg:pb-24">
-            <div>
-                <Panel>
-                    <div
-                        className="mb-4 text-4xl text-center font-extrabold leading-tight lg:mb-6 text-white">
-                        {response.success ? (
-                            <h1>Confirmation successful!</h1>
-                        ) : (
-                            <h1>{response.error || 'Waiting for confirmation...'}</h1>
-                        )}
-                    </div>
-                </Panel>
-            </div>
-            <ContactInformation/>
-        </main>
-    );
-};
+        <FormShell title="Email confirmation">
+            {response.success ? (
+                <Notice tone="success">
+                    <p>Confirmation successful! Your account is ready.</p>
+                </Notice>
+            ) : response.error ? (
+                <Notice tone="danger">
+                    <p>{response.error}</p>
+                </Notice>
+            ) : (
+                <div className="flex items-center gap-3 py-2">
+                    <Spinner />
+                    <p className="type-label text-dim">Waiting for confirmation…</p>
+                </div>
+            )}
 
-export default MailConfirmationPage;
+            <FormFooterLinks
+                links={[
+                    { href: "/login", label: "Go to login" },
+                    { href: "/resend-confirm-email", label: "Request a new confirmation email" },
+                ]}
+            />
+        </FormShell>
+    );
+}

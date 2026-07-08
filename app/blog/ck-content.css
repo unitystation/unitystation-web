@@ -5,22 +5,22 @@
  */
 
 :root {
-    --ck-color-image-caption-background: hsl(0, 0%, 97%);
-    --ck-color-image-caption-text: hsl(0, 0%, 20%);
-    --ck-color-table-caption-background: hsl(0, 0%, 97%);
-    --ck-color-table-caption-text: hsl(0, 0%, 20%);
+    --ck-color-image-caption-background: rgb(var(--c-hull));
+    --ck-color-image-caption-text: rgb(var(--c-dim));
+    --ck-color-table-caption-background: rgb(var(--c-hull));
+    --ck-color-table-caption-text: rgb(var(--c-dim));
     --ck-image-style-spacing: 1.5em;
     --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2);
 }
 
 /* ckeditor5-font/theme/fontsize.css */
 .ck-content .text-tiny {
-    font-size: .7em;
+    font-size: 0.7em;
 }
 
 /* ckeditor5-font/theme/fontsize.css */
 .ck-content .text-small {
-    font-size: .85em;
+    font-size: 0.85em;
 }
 
 /* ckeditor5-font/theme/fontsize.css */
@@ -82,8 +82,8 @@
     word-break: break-word;
     color: var(--ck-color-image-caption-text);
     background-color: var(--ck-color-image-caption-background);
-    padding: .6em;
-    font-size: .75em;
+    padding: 0.6em;
+    font-size: 0.75em;
     outline-offset: -1px;
 }
 
@@ -193,8 +193,8 @@
     text-align: center;
     color: var(--ck-color-table-caption-text);
     background-color: var(--ck-color-table-caption-background);
-    padding: .6em;
-    font-size: .75em;
+    padding: 0.6em;
+    font-size: 0.75em;
     outline-offset: -1px;
 }
 
@@ -217,7 +217,7 @@
 .ck-content .table table td,
 .ck-content .table table th {
     min-width: 2em;
-    padding: .4em;
+    padding: 0.4em;
     border: 1px solid hsl(0, 0%, 75%);
 }
 
@@ -253,14 +253,26 @@
     position: relative;
 }
 
-/* Custom CSS for ck-content */
+/* Custom CSS for ck-content, themed with the site's design tokens */
+.ck-content {
+    line-height: 1.7;
+}
+
 .ck-content p {
     padding: 5px;
 }
 
-.ck-content p a {
-    color: slateblue;
+.ck-content a {
+    color: rgb(var(--c-accent));
     text-decoration: underline;
+}
+
+.ck-content a:hover {
+    color: rgb(var(--c-crew));
+}
+
+.ck-content strong {
+    color: rgb(var(--c-crew));
 }
 
 .ck-content section {
@@ -269,7 +281,7 @@
 }
 
 .ck-content ul {
-    list-style-type: disc;
+    list-style-type: square;
     padding-left: 2rem;
 }
 
@@ -278,13 +290,37 @@
     padding-left: 2rem;
 }
 
+.ck-content blockquote {
+    margin: 1em 0;
+    border-left: 2px solid rgb(var(--c-warning));
+    padding-left: 1em;
+    color: rgb(var(--c-dim));
+}
+
+.ck-content code {
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 0.875em;
+    background: rgb(var(--c-hull));
+    border: 1px solid rgb(var(--c-seam));
+    padding: 0.1em 0.4em;
+}
+
+.ck-content .table table td,
+.ck-content .table table th {
+    border-color: rgb(var(--c-seam));
+}
+
+.ck-content .table table {
+    border-color: rgb(var(--c-seam));
+}
+
 .video-wrapper {
     position: relative;
     height: auto;
-    padding-top: calc(100% / (16 / 9)); /* 16:9 aspect ratio */
+    padding-top: calc(100% / (16 / 9));
+    /* 16:9 aspect ratio */
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 1em;
+    border: 1px solid rgb(var(--c-seam));
 }
 
 .video-wrapper iframe {
