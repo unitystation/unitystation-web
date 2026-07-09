@@ -32,7 +32,7 @@ export default function RotatingTagline() {
     }, []);
 
     return (
-        <p className="splash-text pointer-events-none absolute -top-9 left-0 z-10 max-w-64 text-center font-display text-sm font-semibold leading-tight text-warning [text-shadow:2px_2px_0_rgb(var(--c-void)/0.95)] sm:-left-4 sm:-top-8">
+        <p className="splash-text pointer-events-none absolute -top-9 left-0 z-10 max-w-64 text-center font-display text-sm font-semibold leading-tight text-warning [text-shadow:2px_2px_0_rgb(var(--c-void)/0.95)] sm:-left-4 sm:-top-8 lg:left-0">
             {tagline}
         </p>
     );
