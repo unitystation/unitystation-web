@@ -85,6 +85,7 @@ describe("Responsive layout", () => {
 
         cy.visit("/blog");
         cy.wait("@postsPage1");
+        cy.contains("h2", "Station reactor now explodes properly").should("be.visible");
         // materialise the infinite-scroll page before scanning
         cy.scrollTo("bottom");
         cy.wait("@postsPage2");
