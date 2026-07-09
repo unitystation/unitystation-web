@@ -40,8 +40,7 @@ export default function Hero() {
                     </div>
                 </div>
 
-                {/* screenshot feed */}
-                <div className="relative w-full animate-fade-up [animation-delay:360ms] lg:-mr-6 lg:w-auto">
+                <div className="relative w-full animate-fade-up [animation-delay:360ms] lg:w-auto">
                     <ScreenshotFeed />
                 </div>
             </div>
