@@ -45,7 +45,7 @@ function OsTabs({
                         aria-selected={active}
                         onClick={() => onSelect(os)}
                         className={classNames(
-                            "flex flex-1 items-center justify-center gap-2 px-4 py-3 font-display text-sm font-semibold uppercase tracking-label transition-colors",
+                            "flex flex-1 items-center justify-center gap-1.5 px-2 py-3 font-display text-xs font-semibold uppercase tracking-label transition-colors sm:gap-2 sm:px-4 sm:text-sm",
                             "focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-inset",
                             active
                                 ? "border-b-2 border-accent bg-primary/15 text-accent"
@@ -54,7 +54,11 @@ function OsTabs({
                     >
                         <Icon className="h-4 w-4" aria-hidden />
                         <span>{label}</span>
-                        {os === detected && <Badge tone="info">Detected</Badge>}
+                        {os === detected && (
+                            <Badge tone="info" className="hidden sm:inline-flex">
+                                Detected
+                            </Badge>
+                        )}
                     </button>
                 );
             })}
