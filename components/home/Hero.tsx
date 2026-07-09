@@ -7,7 +7,7 @@ import ScreenshotFeed from "./ScreenshotFeed";
 export default function Hero() {
     return (
         <section className="mx-auto flex min-h-[calc(100svh-3.5rem)] w-full max-w-[88rem] flex-col justify-center px-4 pb-14 pt-20 sm:px-6 lg:py-16">
-            <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-10 xl:grid-cols-[minmax(0,10fr)_minmax(0,11fr)] xl:gap-14">
+            <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-10 xl:grid-cols-[minmax(0,10fr)_minmax(0,11fr)] xl:gap-14">
                 {/* Title column */}
                 <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
                     <div className="relative animate-fade-up">
