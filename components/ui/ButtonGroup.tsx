@@ -15,7 +15,8 @@ export default function ButtonGroup({ className, children, ...rest }: Props) {
         <div
             role="group"
             className={classNames(
-                "flex divide-x divide-seam overflow-hidden rounded-md",
+                "flex flex-col divide-y divide-seam overflow-hidden rounded-md",
+                "min-[480px]:flex-row min-[480px]:divide-x min-[480px]:divide-y-0",
                 "border border-seam bg-steel shadow-bevel",
                 "[&>*]:flex-1 [&>*]:rounded-none",
                 // keep focus rings visible inside the clipped container
