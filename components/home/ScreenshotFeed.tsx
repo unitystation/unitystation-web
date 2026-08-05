@@ -71,7 +71,7 @@ export default function ScreenshotFeed() {
                             />
                         ) : null,
                     )}
-                    <div className="scanlines absolute inset-0" aria-hidden />
+                    <div className="absolute inset-0" aria-hidden />
                 </div>
 
                 {/* Status bar: frame picker + counter */}
