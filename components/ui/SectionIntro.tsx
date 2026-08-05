@@ -29,7 +29,7 @@ export default function SectionIntro({
         <div
             className={classNames(centered && "flex flex-col items-center text-center", className)}
         >
-            <p className="type-label text-halo-sm text-faint">{kicker}</p>
+            <p className="type-label text-halo-sm text-faint underline">{kicker}</p>
             <h2
                 className={classNames(
                     "text-halo-lg mt-4 font-display font-bold leading-tight text-crew",
