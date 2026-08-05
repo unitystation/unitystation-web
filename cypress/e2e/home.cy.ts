@@ -47,7 +47,7 @@ describe("Home page", () => {
     });
 
     it("renders the about and community sections", () => {
-        cy.contains("What is Unitystation?").should("exist");
+        cy.contains("What is Space Station 13?").should("exist");
         cy.contains("Pick a job and keep the station running.").should("exist");
         cy.contains("h2", "Join the community playtest!").scrollIntoView().should("be.visible");
         cy.contains("a", "Join the Discord").should(
