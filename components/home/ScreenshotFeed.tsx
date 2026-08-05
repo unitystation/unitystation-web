@@ -57,11 +57,6 @@ export default function ScreenshotFeed() {
                 className="absolute -right-4 -top-4 hidden h-full w-full rounded-lg border border-seam bg-raised sm:block"
             />
             <div className="relative overflow-hidden rounded-lg border border-seam bg-panel shadow-window">
-                <PanelBar>
-                    <StatusLight tone="success" blink />
-                    <p className="type-label text-dim">In-game screenshots</p>
-                </PanelBar>
-
                 <div className="relative aspect-video bg-void xl:aspect-[16/10]">
                     {HERO_IMAGES.map((src, i) =>
                         loaded.has(i) ? (
@@ -104,6 +99,7 @@ export default function ScreenshotFeed() {
                             />
                         ))}
                     </div>
+                    <p className="type-label text-dim">In-game screenshots</p>
                     <p className="type-label text-faint">
                         {String(frame + 1).padStart(2, "0")} /{" "}
                         {String(HERO_IMAGES.length).padStart(2, "0")}
