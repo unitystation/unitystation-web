@@ -3,7 +3,6 @@
 import classNames from "classnames";
 import { useEffect, useState } from "react";
 import PanelBar from "../ui/PanelBar";
-import StatusLight from "../ui/StatusLight";
 
 const HERO_IMAGES: string[] = [
     "https://cdn.unitystation.org/Website-Statics/heroImages/bar-engine.png",
